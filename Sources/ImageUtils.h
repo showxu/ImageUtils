@@ -4,7 +4,7 @@
 //
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for ImageUtils.
 FOUNDATION_EXPORT double ImageUtilsVersionNumber;

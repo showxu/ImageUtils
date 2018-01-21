@@ -8,9 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		330A096C201494C600B4D966 /* ImageUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 330A0962201494C500B4D966 /* ImageUtils.framework */; };
-		33C64E712014977B002DD382 /* ImageUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 33C64E6D2014977B002DD382 /* ImageUtils.h */; };
-		33C64E722014977B002DD382 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33C64E6E2014977B002DD382 /* Info.plist */; };
-		33C64E7720149968002DD382 /* ImageUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C64E7520149968002DD382 /* ImageUtilsTests.swift */; };
+		33A51A542014B83900DDB509 /* Image.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A532014B83900DDB509 /* Image.Utils.swift */; };
+		33A51A552014B83900DDB509 /* Image.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A532014B83900DDB509 /* Image.Utils.swift */; };
+		33A51A562014B83900DDB509 /* Image.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A532014B83900DDB509 /* Image.Utils.swift */; };
+		33A51A572014B83900DDB509 /* Image.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A532014B83900DDB509 /* Image.Utils.swift */; };
+		33A51A582014B88300DDB509 /* ImageUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 33C64E6D2014977B002DD382 /* ImageUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		33A51A592014B88300DDB509 /* ImageUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 33C64E6D2014977B002DD382 /* ImageUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		33A51A5A2014B88400DDB509 /* ImageUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 33C64E6D2014977B002DD382 /* ImageUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		33A51A5C2014B89A00DDB509 /* ImageUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C64E7520149968002DD382 /* ImageUtilsTests.swift */; };
+		33A51A5D2014B89D00DDB509 /* ImageUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C64E7520149968002DD382 /* ImageUtilsTests.swift */; };
+		33A51A5E2014B89E00DDB509 /* ImageUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C64E7520149968002DD382 /* ImageUtilsTests.swift */; };
+		33A51A602014B92B00DDB509 /* Compat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A5F2014B92B00DDB509 /* Compat.swift */; };
+		33A51A612014B92B00DDB509 /* Compat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A5F2014B92B00DDB509 /* Compat.swift */; };
+		33A51A622014B92B00DDB509 /* Compat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A5F2014B92B00DDB509 /* Compat.swift */; };
+		33A51A632014B92B00DDB509 /* Compat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A5F2014B92B00DDB509 /* Compat.swift */; };
+		33A51A652014CFC800DDB509 /* Color.rgba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A642014CFC800DDB509 /* Color.rgba.swift */; };
+		33A51A662014CFC800DDB509 /* Color.rgba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A642014CFC800DDB509 /* Color.rgba.swift */; };
+		33A51A672014CFC800DDB509 /* Color.rgba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A642014CFC800DDB509 /* Color.rgba.swift */; };
+		33A51A682014CFC800DDB509 /* Color.rgba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A642014CFC800DDB509 /* Color.rgba.swift */; };
+		33C64E712014977B002DD382 /* ImageUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 33C64E6D2014977B002DD382 /* ImageUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		33C64E7820149968002DD382 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33C64E7620149968002DD382 /* Info.plist */; };
 		33C64E922014A537002DD382 /* ImageUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C64E892014A536002DD382 /* ImageUtils.framework */; };
 		33C64EAE2014A589002DD382 /* ImageUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C64EA52014A588002DD382 /* ImageUtils.framework */; };
@@ -44,6 +60,9 @@
 		330A0962201494C500B4D966 /* ImageUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImageUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		330A096B201494C600B4D966 /* ImageUtils Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ImageUtils Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33880CB32014AEA400C700B8 /* Java.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Java.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		33A51A532014B83900DDB509 /* Image.Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.Utils.swift; sourceTree = "<group>"; };
+		33A51A5F2014B92B00DDB509 /* Compat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Compat.swift; sourceTree = "<group>"; };
+		33A51A642014CFC800DDB509 /* Color.rgba.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.rgba.swift; sourceTree = "<group>"; };
 		33C64E6D2014977B002DD382 /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
 		33C64E6E2014977B002DD382 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33C64E7520149968002DD382 /* ImageUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUtilsTests.swift; sourceTree = "<group>"; };
@@ -142,6 +161,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		33A51A512014B80800DDB509 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				33A51A5F2014B92B00DDB509 /* Compat.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		33A51A522014B81400DDB509 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				33A51A532014B83900DDB509 /* Image.Utils.swift */,
+				33A51A642014CFC800DDB509 /* Color.rgba.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		33AFE07F2014ADD30023DA8C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,7 +198,9 @@
 		33C64E6C2014977B002DD382 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				33A51A512014B80800DDB509 /* Core */,
 				33AFE0812014AE7B0023DA8C /* Java */,
+				33A51A522014B81400DDB509 /* Extensions */,
 				33C64E7320149902002DD382 /* Supporting Files */,
 			);
 			path = Sources;
@@ -220,6 +258,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A51A582014B88300DDB509 /* ImageUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +266,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A51A592014B88300DDB509 /* ImageUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +274,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A51A5A2014B88400DDB509 /* ImageUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,9 +335,9 @@
 			productReference = 33C64E892014A536002DD382 /* ImageUtils.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		33C64E902014A537002DD382 /* ImageUtils iOSTests */ = {
+		33C64E902014A537002DD382 /* ImageUtils iOST ests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 33C64E9D2014A537002DD382 /* Build configuration list for PBXNativeTarget "ImageUtils iOSTests" */;
+			buildConfigurationList = 33C64E9D2014A537002DD382 /* Build configuration list for PBXNativeTarget "ImageUtils iOST ests" */;
 			buildPhases = (
 				33C64E8D2014A537002DD382 /* Sources */,
 				33C64E8E2014A537002DD382 /* Frameworks */,
@@ -307,7 +348,7 @@
 			dependencies = (
 				33C64E942014A537002DD382 /* PBXTargetDependency */,
 			);
-			name = "ImageUtils iOSTests";
+			name = "ImageUtils iOST ests";
 			productName = "ImageUtils iOSTests";
 			productReference = 33C64E912014A537002DD382 /* ImageUtils Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -330,9 +371,9 @@
 			productReference = 33C64EA52014A588002DD382 /* ImageUtils.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		33C64EAC2014A589002DD382 /* ImageUtils tvOSTests */ = {
+		33C64EAC2014A589002DD382 /* ImageUtils tvOS Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 33C64EB92014A589002DD382 /* Build configuration list for PBXNativeTarget "ImageUtils tvOSTests" */;
+			buildConfigurationList = 33C64EB92014A589002DD382 /* Build configuration list for PBXNativeTarget "ImageUtils tvOS Tests" */;
 			buildPhases = (
 				33C64EA92014A589002DD382 /* Sources */,
 				33C64EAA2014A589002DD382 /* Frameworks */,
@@ -343,7 +384,7 @@
 			dependencies = (
 				33C64EB02014A589002DD382 /* PBXTargetDependency */,
 			);
-			name = "ImageUtils tvOSTests";
+			name = "ImageUtils tvOS Tests";
 			productName = "ImageUtils tvOSTests";
 			productReference = 33C64EAD2014A589002DD382 /* ImageUtils Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -386,6 +427,7 @@
 					};
 					33C64E882014A536002DD382 = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					33C64E902014A537002DD382 = {
@@ -394,6 +436,7 @@
 					};
 					33C64EA42014A588002DD382 = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					33C64EAC2014A589002DD382 = {
@@ -402,6 +445,7 @@
 					};
 					33C64EC02014A5A3002DD382 = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -421,9 +465,9 @@
 				330A0961201494C500B4D966 /* ImageUtils macOS */,
 				330A096A201494C600B4D966 /* ImageUtils macOS Tests */,
 				33C64E882014A536002DD382 /* ImageUtils iOS */,
-				33C64E902014A537002DD382 /* ImageUtils iOSTests */,
+				33C64E902014A537002DD382 /* ImageUtils iOST ests */,
 				33C64EA42014A588002DD382 /* ImageUtils tvOS */,
-				33C64EAC2014A589002DD382 /* ImageUtils tvOSTests */,
+				33C64EAC2014A589002DD382 /* ImageUtils tvOS Tests */,
 				33C64EC02014A5A3002DD382 /* ImageUtils watchOS */,
 			);
 		};
@@ -435,7 +479,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				33C64E7820149968002DD382 /* Info.plist in Resources */,
-				33C64E722014977B002DD382 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,7 +531,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33C64E7720149968002DD382 /* ImageUtilsTests.swift in Sources */,
+				33A51A602014B92B00DDB509 /* Compat.swift in Sources */,
+				33A51A542014B83900DDB509 /* Image.Utils.swift in Sources */,
+				33A51A652014CFC800DDB509 /* Color.rgba.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +541,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A51A5C2014B89A00DDB509 /* ImageUtilsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +549,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A51A612014B92B00DDB509 /* Compat.swift in Sources */,
+				33A51A552014B83900DDB509 /* Image.Utils.swift in Sources */,
+				33A51A662014CFC800DDB509 /* Color.rgba.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +559,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A51A5D2014B89D00DDB509 /* ImageUtilsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +567,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A51A622014B92B00DDB509 /* Compat.swift in Sources */,
+				33A51A562014B83900DDB509 /* Image.Utils.swift in Sources */,
+				33A51A672014CFC800DDB509 /* Color.rgba.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +577,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A51A5E2014B89E00DDB509 /* ImageUtilsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +585,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A51A632014B92B00DDB509 /* Compat.swift in Sources */,
+				33A51A572014B83900DDB509 /* Image.Utils.swift in Sources */,
+				33A51A682014CFC800DDB509 /* Color.rgba.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,6 +790,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33C64E7F20149CBD002DD382 /* Debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -745,6 +803,7 @@
 				PRODUCT_NAME = ImageUtils;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -754,6 +813,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33C64E8020149CD2002DD382 /* Release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -776,6 +836,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33C64E8220149D2A002DD382 /* Tests.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -790,6 +851,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33C64E8220149D2A002DD382 /* Tests.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -805,6 +867,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33C64E7F20149CBD002DD382 /* Debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -816,6 +879,7 @@
 				PRODUCT_NAME = ImageUtils;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
@@ -826,6 +890,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33C64E8020149CD2002DD382 /* Release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -848,6 +913,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33C64E8220149D2A002DD382 /* Tests.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				SDKROOT = appletvos;
@@ -861,6 +927,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33C64E8220149D2A002DD382 /* Tests.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				SDKROOT = appletvos;
@@ -876,6 +943,7 @@
 			baseConfigurationReference = 33C64E7F20149CBD002DD382 /* Debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -887,6 +955,7 @@
 				PRODUCT_NAME = ImageUtils;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 4.0;
@@ -898,6 +967,7 @@
 			baseConfigurationReference = 33C64E8020149CD2002DD382 /* Release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -955,7 +1025,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		33C64E9D2014A537002DD382 /* Build configuration list for PBXNativeTarget "ImageUtils iOSTests" */ = {
+		33C64E9D2014A537002DD382 /* Build configuration list for PBXNativeTarget "ImageUtils iOST ests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				33C64E9E2014A537002DD382 /* Debug */,
@@ -973,7 +1043,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		33C64EB92014A589002DD382 /* Build configuration list for PBXNativeTarget "ImageUtils tvOSTests" */ = {
+		33C64EB92014A589002DD382 /* Build configuration list for PBXNativeTarget "ImageUtils tvOS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				33C64EBA2014A589002DD382 /* Debug */,
