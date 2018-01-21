@@ -1,0 +1,10 @@
+//
+//  Test.xcconfig
+//  ImageUtils
+//
+//
+
+AUTHOR_NAME = 0xxd0
+PRODUCT_NAME = ImageUtils Tests
+PRODUCT_BUNDLE_IDENTIFIER = com.0xxd0.$(PRODUCT_NAME:c99extidentifier)
+INFOPLIST_FILE = $(SRCROOT)/Tests/Info.plist
