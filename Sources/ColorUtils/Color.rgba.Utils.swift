@@ -4,9 +4,21 @@
 //
 //
 
-import CoreGraphics.CGGeometry
-import libkern
-import Darwin
+import CoreGraphics.CGError
+
+extension Color {
+    
+    public convenience init(hex: Int, alpha: Float) {
+        self.init(r: Color.red(hex), g: Color.green(hex), b: Color.blue(hex), a: alpha)
+    }
+    
+    public convenience init(r: Int, g: Int, b: Int, a: Float) {
+        self.init(red: CGFloat(r) / 255,
+                  green: CGFloat(g) / 255,
+                  blue: CGFloat(b) / 255,
+                  alpha: CGFloat(a))
+    }
+}
 
 extension Color {
     
@@ -30,7 +42,7 @@ extension Color {
         let g = (green << 8) & 0x0000ff00 // Shift Green 8-bits and mask out other stuff
         let b = blue & 0x000000ff // Mask out anything not blue.
 
-        // watchOS Int 32-bit overflow
+        // watchOS 32-bit Int overflow
         #if arch(arm) || arch(i386)
             let rgb: UInt = 0xff000000 | UInt(r|g|b) // 0xff000000 for 100% Alpha. Bitwise OR everything together.
             return Int(rgb)

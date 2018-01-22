@@ -12,6 +12,17 @@
 
 extension Image {
     
+    var width: CGFloat {
+        return size.width
+    }
+    
+    var height: CGFloat {
+        return size.height
+    }
+}
+
+extension Image {
+    
     #if os(iOS) || os(tvOS)
     final public class func build(_ size: CGSize = .zero,
                                   color: Color = .clear,

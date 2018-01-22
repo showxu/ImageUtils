@@ -17,4 +17,3 @@
     public typealias Image = UIImage
     public typealias Color = UIColor
 #endif
-

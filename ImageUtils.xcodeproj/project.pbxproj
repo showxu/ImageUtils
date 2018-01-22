@@ -22,10 +22,26 @@
 		33A51A612014B92B00DDB509 /* Compat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A5F2014B92B00DDB509 /* Compat.swift */; };
 		33A51A622014B92B00DDB509 /* Compat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A5F2014B92B00DDB509 /* Compat.swift */; };
 		33A51A632014B92B00DDB509 /* Compat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A5F2014B92B00DDB509 /* Compat.swift */; };
-		33A51A652014CFC800DDB509 /* Color.rgba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A642014CFC800DDB509 /* Color.rgba.swift */; };
-		33A51A662014CFC800DDB509 /* Color.rgba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A642014CFC800DDB509 /* Color.rgba.swift */; };
-		33A51A672014CFC800DDB509 /* Color.rgba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A642014CFC800DDB509 /* Color.rgba.swift */; };
-		33A51A682014CFC800DDB509 /* Color.rgba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A642014CFC800DDB509 /* Color.rgba.swift */; };
+		33A51A7A2015963D00DDB509 /* Image.Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A792015963D00DDB509 /* Image.Builder.swift */; };
+		33A51A7B2015963D00DDB509 /* Image.Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A792015963D00DDB509 /* Image.Builder.swift */; };
+		33A51A7C2015963D00DDB509 /* Image.Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A792015963D00DDB509 /* Image.Builder.swift */; };
+		33A51A7D2015963D00DDB509 /* Image.Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A792015963D00DDB509 /* Image.Builder.swift */; };
+		33A51A802015A02A00DDB509 /* Color.rgba.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A7F2015A02A00DDB509 /* Color.rgba.Utils.swift */; };
+		33A51A812015A02A00DDB509 /* Color.rgba.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A7F2015A02A00DDB509 /* Color.rgba.Utils.swift */; };
+		33A51A822015A02A00DDB509 /* Color.rgba.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A7F2015A02A00DDB509 /* Color.rgba.Utils.swift */; };
+		33A51A832015A02A00DDB509 /* Color.rgba.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A7F2015A02A00DDB509 /* Color.rgba.Utils.swift */; };
+		33A51A852015A05100DDB509 /* Math.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A842015A05100DDB509 /* Math.Utils.swift */; };
+		33A51A862015A05100DDB509 /* Math.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A842015A05100DDB509 /* Math.Utils.swift */; };
+		33A51A872015A05100DDB509 /* Math.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A842015A05100DDB509 /* Math.Utils.swift */; };
+		33A51A882015A05100DDB509 /* Math.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A842015A05100DDB509 /* Math.Utils.swift */; };
+		33A51A8A2015A07E00DDB509 /* Geometry.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A892015A07E00DDB509 /* Geometry.Utils.swift */; };
+		33A51A8B2015A07E00DDB509 /* Geometry.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A892015A07E00DDB509 /* Geometry.Utils.swift */; };
+		33A51A8C2015A07E00DDB509 /* Geometry.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A892015A07E00DDB509 /* Geometry.Utils.swift */; };
+		33A51A8D2015A07E00DDB509 /* Geometry.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A892015A07E00DDB509 /* Geometry.Utils.swift */; };
+		33A51A9A2015A8D200DDB509 /* Image.Effects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A992015A8D200DDB509 /* Image.Effects.swift */; };
+		33A51A9B2015A8D200DDB509 /* Image.Effects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A992015A8D200DDB509 /* Image.Effects.swift */; };
+		33A51A9C2015A8D200DDB509 /* Image.Effects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A992015A8D200DDB509 /* Image.Effects.swift */; };
+		33A51A9D2015A8D200DDB509 /* Image.Effects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A992015A8D200DDB509 /* Image.Effects.swift */; };
 		33C64E712014977B002DD382 /* ImageUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 33C64E6D2014977B002DD382 /* ImageUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		33C64E7820149968002DD382 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33C64E7620149968002DD382 /* Info.plist */; };
 		33C64E922014A537002DD382 /* ImageUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C64E892014A536002DD382 /* ImageUtils.framework */; };
@@ -62,7 +78,11 @@
 		33880CB32014AEA400C700B8 /* Java.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Java.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		33A51A532014B83900DDB509 /* Image.Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.Utils.swift; sourceTree = "<group>"; };
 		33A51A5F2014B92B00DDB509 /* Compat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Compat.swift; sourceTree = "<group>"; };
-		33A51A642014CFC800DDB509 /* Color.rgba.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.rgba.swift; sourceTree = "<group>"; };
+		33A51A792015963D00DDB509 /* Image.Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.Builder.swift; sourceTree = "<group>"; };
+		33A51A7F2015A02A00DDB509 /* Color.rgba.Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.rgba.Utils.swift; sourceTree = "<group>"; };
+		33A51A842015A05100DDB509 /* Math.Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.Utils.swift; sourceTree = "<group>"; };
+		33A51A892015A07E00DDB509 /* Geometry.Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.Utils.swift; sourceTree = "<group>"; };
+		33A51A992015A8D200DDB509 /* Image.Effects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.Effects.swift; sourceTree = "<group>"; };
 		33C64E6D2014977B002DD382 /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
 		33C64E6E2014977B002DD382 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33C64E7520149968002DD382 /* ImageUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUtilsTests.swift; sourceTree = "<group>"; };
@@ -169,13 +189,31 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		33A51A522014B81400DDB509 /* Extensions */ = {
+		33A51A522014B81400DDB509 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				33A51A892015A07E00DDB509 /* Geometry.Utils.swift */,
+				33A51A842015A05100DDB509 /* Math.Utils.swift */,
 				33A51A532014B83900DDB509 /* Image.Utils.swift */,
-				33A51A642014CFC800DDB509 /* Color.rgba.swift */,
 			);
-			path = Extensions;
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		33A51A7E20159FE200DDB509 /* ColorUtils */ = {
+			isa = PBXGroup;
+			children = (
+				33A51A792015963D00DDB509 /* Image.Builder.swift */,
+				33A51A7F2015A02A00DDB509 /* Color.rgba.Utils.swift */,
+			);
+			path = ColorUtils;
+			sourceTree = "<group>";
+		};
+		33A51A8E2015A12D00DDB509 /* vImage */ = {
+			isa = PBXGroup;
+			children = (
+				33A51A992015A8D200DDB509 /* Image.Effects.swift */,
+			);
+			path = vImage;
 			sourceTree = "<group>";
 		};
 		33AFE07F2014ADD30023DA8C /* Supporting Files */ = {
@@ -199,8 +237,10 @@
 			isa = PBXGroup;
 			children = (
 				33A51A512014B80800DDB509 /* Core */,
+				33A51A8E2015A12D00DDB509 /* vImage */,
+				33A51A7E20159FE200DDB509 /* ColorUtils */,
 				33AFE0812014AE7B0023DA8C /* Java */,
-				33A51A522014B81400DDB509 /* Extensions */,
+				33A51A522014B81400DDB509 /* Misc */,
 				33C64E7320149902002DD382 /* Supporting Files */,
 			);
 			path = Sources;
@@ -419,6 +459,7 @@
 				TargetAttributes = {
 					330A0961201494C500B4D966 = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					330A096A201494C600B4D966 = {
@@ -532,8 +573,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				33A51A602014B92B00DDB509 /* Compat.swift in Sources */,
+				33A51A802015A02A00DDB509 /* Color.rgba.Utils.swift in Sources */,
+				33A51A7A2015963D00DDB509 /* Image.Builder.swift in Sources */,
+				33A51A9A2015A8D200DDB509 /* Image.Effects.swift in Sources */,
 				33A51A542014B83900DDB509 /* Image.Utils.swift in Sources */,
-				33A51A652014CFC800DDB509 /* Color.rgba.swift in Sources */,
+				33A51A8A2015A07E00DDB509 /* Geometry.Utils.swift in Sources */,
+				33A51A852015A05100DDB509 /* Math.Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,8 +595,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				33A51A612014B92B00DDB509 /* Compat.swift in Sources */,
+				33A51A812015A02A00DDB509 /* Color.rgba.Utils.swift in Sources */,
+				33A51A7B2015963D00DDB509 /* Image.Builder.swift in Sources */,
+				33A51A9B2015A8D200DDB509 /* Image.Effects.swift in Sources */,
 				33A51A552014B83900DDB509 /* Image.Utils.swift in Sources */,
-				33A51A662014CFC800DDB509 /* Color.rgba.swift in Sources */,
+				33A51A8B2015A07E00DDB509 /* Geometry.Utils.swift in Sources */,
+				33A51A862015A05100DDB509 /* Math.Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,8 +617,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				33A51A622014B92B00DDB509 /* Compat.swift in Sources */,
+				33A51A822015A02A00DDB509 /* Color.rgba.Utils.swift in Sources */,
+				33A51A7C2015963D00DDB509 /* Image.Builder.swift in Sources */,
+				33A51A9C2015A8D200DDB509 /* Image.Effects.swift in Sources */,
 				33A51A562014B83900DDB509 /* Image.Utils.swift in Sources */,
-				33A51A672014CFC800DDB509 /* Color.rgba.swift in Sources */,
+				33A51A8C2015A07E00DDB509 /* Geometry.Utils.swift in Sources */,
+				33A51A872015A05100DDB509 /* Math.Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,8 +639,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				33A51A632014B92B00DDB509 /* Compat.swift in Sources */,
+				33A51A832015A02A00DDB509 /* Color.rgba.Utils.swift in Sources */,
+				33A51A7D2015963D00DDB509 /* Image.Builder.swift in Sources */,
+				33A51A9D2015A8D200DDB509 /* Image.Effects.swift in Sources */,
 				33A51A572014B83900DDB509 /* Image.Utils.swift in Sources */,
-				33A51A682014CFC800DDB509 /* Color.rgba.swift in Sources */,
+				33A51A8D2015A07E00DDB509 /* Geometry.Utils.swift in Sources */,
+				33A51A882015A05100DDB509 /* Math.Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -728,6 +785,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33C64E7F20149CBD002DD382 /* Debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -738,7 +796,9 @@
 				FRAMEWORK_VERSION = A;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = ImageUtils;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -747,6 +807,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33C64E8020149CD2002DD382 /* Release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -757,6 +818,7 @@
 				FRAMEWORK_VERSION = A;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = ImageUtils;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 			};
@@ -770,6 +832,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "ImageUtils Tests";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -782,6 +845,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "ImageUtils Tests";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -841,6 +905,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "ImageUtils Tests";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -856,6 +921,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "ImageUtils Tests";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -916,6 +982,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "ImageUtils Tests";
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -930,6 +997,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "ImageUtils Tests";
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;

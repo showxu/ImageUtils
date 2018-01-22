@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:ImageUtils.xcodeproj">
+      location = "self:/Users/alchemist/Developer/Repository/Github/0xxd0/ImageUtils/ImageUtils.xcodeproj">
    </FileRef>
 </Workspace>
