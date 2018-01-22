@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:/Users/alchemist/Developer/Repository/Github/0xxd0/ImageUtils/Spotlight.playground">
+   </FileRef>
+   <FileRef
+      location = "container:ImageUtils.xcodeproj">
+   </FileRef>
+</Workspace>

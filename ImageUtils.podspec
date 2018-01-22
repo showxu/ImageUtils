@@ -50,8 +50,8 @@ Pod::Spec.new do |s|
 
   # s.license      = 'GNU General Public License v3.0'
   s.license      = { 
-    :type => 'GNU General Public License v3.0', 
-    :file => 'LICENSE' 
+    :type => 'MIT',
+    :file => 'LICENSE'
   }
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
