@@ -1,14 +1,13 @@
 
-//: [Previous](@previous)
+//: [Previous Page](@previous)
 
 //: ## vImage
 
-import UIKit
 import ImageUtils
 
-//: ### Image.Effects
+//: **Image.Effects**
 
 //let img = UIImage(named: "porche.png")
 //Image.blur(light: img!)
 
-//: [Next](@next)
+//: [Next Page](@next)

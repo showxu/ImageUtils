@@ -1,6 +1,5 @@
 //
 //  Compat.swift
-//  ImageUtils
 //
 //
 

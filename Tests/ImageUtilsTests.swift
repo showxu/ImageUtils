@@ -1,6 +1,5 @@
 //
 //  ImageUtilsTests.swift
-//  ImageUtilsTests
 //
 //
 

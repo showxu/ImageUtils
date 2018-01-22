@@ -1,6 +1,5 @@
 //
 //  Image+Utils.swift
-//  ImageUtils
 //
 //
 

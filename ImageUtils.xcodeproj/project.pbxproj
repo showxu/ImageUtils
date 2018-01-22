@@ -181,6 +181,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		3356C11F2016156A00042C1E /* ImageUtils */ = {
+			isa = PBXGroup;
+			children = (
+				33A51A532014B83900DDB509 /* Image.Utils.swift */,
+			);
+			path = ImageUtils;
+			sourceTree = "<group>";
+		};
 		33A51A512014B80800DDB509 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,7 +202,6 @@
 			children = (
 				33A51A892015A07E00DDB509 /* Geometry.Utils.swift */,
 				33A51A842015A05100DDB509 /* Math.Utils.swift */,
-				33A51A532014B83900DDB509 /* Image.Utils.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -238,6 +245,7 @@
 			children = (
 				33A51A512014B80800DDB509 /* Core */,
 				33A51A8E2015A12D00DDB509 /* vImage */,
+				3356C11F2016156A00042C1E /* ImageUtils */,
 				33A51A7E20159FE200DDB509 /* ColorUtils */,
 				33AFE0812014AE7B0023DA8C /* Java */,
 				33A51A522014B81400DDB509 /* Misc */,

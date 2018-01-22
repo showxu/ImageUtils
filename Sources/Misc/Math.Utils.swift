@@ -1,6 +1,5 @@
 //
 //  Math.Utils.swift
-//  ImageUtils
 //
 //
 

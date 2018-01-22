@@ -119,7 +119,6 @@ extension Image {
                 effectColor = Color.init(red: r, green: g, blue: b, alpha: effectColorAlpha)
             }
         }
-
         return blur(input, blurRadius: 20, tint: tint, saturation: -1, mask: nil)
     }
     

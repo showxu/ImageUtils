@@ -1,6 +1,5 @@
 //
 //  Geometry.Utils.swift
-//  ImageUtils
 //
 //
 

@@ -1,6 +1,5 @@
 //
 //  Color+Utils.swift
-//  ImageUtils
 //
 //
 
