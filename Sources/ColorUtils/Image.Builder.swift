@@ -10,6 +10,7 @@
     import UIKit
 #endif
 
+// FIXME: Complete Image.Builder
 extension Image {
     
     public enum Size {
