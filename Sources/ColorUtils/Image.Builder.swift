@@ -12,12 +12,12 @@
 // FIXME: Complete Image.Builder
 extension Image {
     
-    public enum Size {
+    public enum ImageSize {
         case fixed(size: CGSize)
         case resizable
     }
     
-    public struct Border {
+    public struct ImageBorder {
         var width: CGFloat = 0
         var color: Color = .clear
     }

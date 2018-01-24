@@ -5,7 +5,7 @@
 
 import UIKit
 
-infix operator <<<< : AdditionPrecedence
+// infix operator <<<< : AdditionPrecedence
 
 extension Color { public struct Utils { } }
 
@@ -105,7 +105,7 @@ extension Color.Utils {
                 if testRatio < Double(minContrastRatio) {
                     minAlpha = testAlpha
                 } else {
-                    maxAlpha = testAlpha;
+                    maxAlpha = testAlpha
                 }
                 numIterations += 1
             }
@@ -165,6 +165,20 @@ extension Color.Utils {
         outHsl[2] = constrain(l, low: 0, high: 1)
     }
 
+    /// Convert the ARGB color to its HSL (hue-saturation-lightness) components.
+    /// <ul>
+    /// <li>outHsl[0] is Hue [0 .. 360)</li>
+    /// <li>outHsl[1] is Saturation [0...1]</li>
+    /// <li>outHsl[2] is Lightness [0...1]</li>
+    /// </ul>
+    ///
+    /// - Parameters:
+    ///   - color: the ARGB color to convert. The alpha component is ignored
+    ///   - outHsl: 3-element array which holds the resulting HSL components
+    public static func colorToHSL(_ color: Int, _ outHsl: inout [Float]){
+        rgbToHSL(r: Color.red(color), g: Color.green(color), b: Color.blue(color), outHsl: &outHsl)
+    }
+    
     /// Convert HSL (hue-saturation-lightness) components to a RGB color.
     /// <ul>
     /// <li>hsl[0] is Hue [0 .. 360)</li>
@@ -277,13 +291,13 @@ extension Color.Utils {
         var sr = Double(r) / 255.0
         sr = sr < 0.04045 ? sr / 12.92 : pow((sr + 0.055) / 1.055, 2.4)
         var sg = Double(g) / 255.0
-        sg = sg < 0.04045 ? sg / 12.92 : pow((sg + 0.055) / 1.055, 2.4);
+        sg = sg < 0.04045 ? sg / 12.92 : pow((sg + 0.055) / 1.055, 2.4)
         var sb = Double(b) / 255.0
-        sb = sb < 0.04045 ? sb / 12.92 : pow((sb + 0.055) / 1.055, 2.4);
+        sb = sb < 0.04045 ? sb / 12.92 : pow((sb + 0.055) / 1.055, 2.4)
     
-        outXyz[0] = 100 * (sr * 0.4124 + sg * 0.3576 + sb * 0.1805);
-        outXyz[1] = 100 * (sr * 0.2126 + sg * 0.7152 + sb * 0.0722);
-        outXyz[2] = 100 * (sr * 0.0193 + sg * 0.1192 + sb * 0.9505);
+        outXyz[0] = 100 * (sr * 0.4124 + sg * 0.3576 + sb * 0.1805)
+        outXyz[1] = 100 * (sr * 0.2126 + sg * 0.7152 + sb * 0.0722)
+        outXyz[2] = 100 * (sr * 0.0193 + sg * 0.1192 + sb * 0.9505)
     }
         
     /// Set the alpha component of {@code color} to be {@code alpha}.

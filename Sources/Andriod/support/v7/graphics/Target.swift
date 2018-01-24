@@ -408,3 +408,14 @@ extension Target {
         }
     }
 }
+
+extension Target: Equatable {
+    
+    public static func ==(lhs: Target, rhs: Target) -> Bool {
+        return
+            lhs.saturationTargets == rhs.saturationTargets &&
+            lhs.lightnessTargets == rhs.lightnessTargets &&
+            lhs.weights == rhs.weights &&
+            lhs.isExclusive == rhs.isExclusive
+    }
+}

@@ -16,3 +16,8 @@
     public typealias Image = UIImage
     public typealias Color = UIColor
 #endif
+
+public typealias Point = CGPoint
+public typealias Size = CGSize
+public typealias Rect = CGRect
+

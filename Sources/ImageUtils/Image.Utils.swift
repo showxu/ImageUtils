@@ -40,6 +40,34 @@ extension Image {
         let image = UIGraphicsGetImageFromCurrentImageContext()
         return image
     }
+    
+    final public class func resize(_ image: Image, dstWidth: Int, dstHeight: Int, filter: Bool = false) -> Image? {
+        return resize(image, to: Size.init(width: dstWidth, height: dstHeight), filter: filter)
+    }
+
+    final public class func resize(_ image: Image, to dstSize: Size, filter: Bool = false) -> Image? {
+        let newRect = Rect(origin: .zero, size: dstSize).integral
+        guard let cgImage = image.cgImage else { return nil }
+    
+        UIGraphicsBeginImageContextWithOptions(dstSize, false, Screen.main.scale)
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        let ctx = UIGraphicsGetCurrentContext()
+        
+        // Set the quality level to use when rescaling
+        ctx?.interpolationQuality = .high
+        let flipVertical = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: dstSize.height)
+        ctx?.concatenate(flipVertical)
+        // Draw into the context; this scales the image
+        ctx?.draw(cgImage, in: newRect)
+        
+        guard let cgImageNew = ctx?.makeImage() else { return nil }
+        // Get the resized image from the context and a UIImage
+        let newImage = UIImage(cgImage: cgImageNew)
+
+        return newImage
+    }
     #endif
 }
 
