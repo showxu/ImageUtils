@@ -71,3 +71,98 @@ extension Image {
     #endif
 }
 
+extension CGImage {
+    
+    open var size: Size {
+        return Size(width: width, height: height)
+    }
+    
+    open var bytes: Int {
+        return bytesPerRow * height
+    }
+}
+
+extension CGContext {
+    
+    open var size: CGSize {
+        return CGSize(width: width, height: height)
+    }
+    
+    open var bytes: Int {
+        return bytesPerRow * height
+    }
+}
+    
+extension CGImage {
+    
+    var context: CGContext? {
+        return CGImage.getContext(self)
+    }
+
+    public class func getContext(_ cgImage: CGImage?) -> CGContext? {
+        guard
+            let cgImage = cgImage,
+            let ctx = getBitmapContext(cgImage)
+        else { return nil }
+        ctx.draw(cgImage, in: Rect(origin: .zero, size: cgImage.size))
+        return ctx
+    }
+    
+    public class func getBitmapContext(
+        _ cgImage: CGImage,
+        _ bitmapInfo: (CGImage) -> UInt32 = { _ in
+            return CGImageAlphaInfo.premultipliedLast.rawValue
+        }) -> CGContext? {
+        guard let colorSpace = cgImage.colorSpace else { return nil }
+        
+        let width = cgImage.width
+        let height = cgImage.height
+        let bitsPerComponent = cgImage.bitsPerComponent
+        let bytesPerRow = cgImage.bytesPerRow
+        
+        let ctx = CGContext(
+            data: nil,
+            width: width,
+            height: height,
+            bitsPerComponent: bitsPerComponent,
+            bytesPerRow: bytesPerRow,
+            space: colorSpace,
+            bitmapInfo: bitmapInfo(cgImage),
+            releaseCallback: nil,
+            releaseInfo: nil
+        )
+        return ctx
+    }
+    
+    public func getCGImage(_ bitmap: UnsafeMutableRawPointer?,
+                           bitmapContext: CGContext?,
+                           release: ((UnsafeMutableRawPointer?) -> Void)?) -> CGImage? {
+        let releasePtr = Unmanaged<AnyObject>.passRetained(release as AnyObject).toOpaque()
+        guard
+            let bitmap = bitmap,
+            let bitmapContext = bitmapContext,
+            let colorSpace = bitmapContext.colorSpace,
+            let dataProvider = CGDataProvider(dataInfo: releasePtr, data: bitmap, size: bitmapContext.bytes, releaseData: {(info, rawData, size) in
+                guard let info = info else { return }
+                let releasePtr = Unmanaged<AnyObject>.fromOpaque(info)
+                let release = releasePtr.takeRetainedValue() as? (UnsafeMutableRawPointer?) -> Void
+                let data = UnsafeMutableRawPointer(mutating: rawData)
+                release?(data)
+            })
+        else { return nil }
+        
+        let cg = CGImage(width: bitmapContext.width,
+                         height: bitmapContext.height,
+                         bitsPerComponent: bitmapContext.bitsPerComponent,
+                         bitsPerPixel: bitmapContext.bitsPerPixel,
+                         bytesPerRow: bitmapContext.bytesPerRow,
+                         space: colorSpace,
+                         bitmapInfo: bitmapContext.bitmapInfo,
+                         provider: dataProvider,
+                         decode: nil,
+                         shouldInterpolate: true,
+                         intent: .defaultIntent)
+        return cg
+    }
+}
+

@@ -323,14 +323,9 @@ extension Color.Utils {
     }
     
     private static func getTempDouble3Array() -> [Double] {
-        // FIXME: 
-//        double[] result = TEMP_ARRAY.get();
-//        if (result == null) {
-//        result = new double[3];
-//        TEMP_ARRAY.set(result);
-//        }
-//        return result
-        return []
+        // FIXME: ThreadLocal<Array>
+        let result = [Double](repeating: 0, count: 3)
+        return result
     }
 }
 

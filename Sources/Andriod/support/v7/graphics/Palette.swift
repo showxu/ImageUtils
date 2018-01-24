@@ -49,7 +49,317 @@ public final class Palette {
     
     static let logTag = "Palette"
     static let logTimings = false
+    
+    /// Start generating a {@link Palette} with the returned {@link Builder} instance.
+    ///
+    /// - Parameter bitmap: bitmap
+    /// - Returns: biulder
+    public static func from(_ bitmap: Bitmap) -> Builder {
+        return Builder(bitmap)
+    }
+    
+    /// Generate a {@link Palette} from the pre-generated list of {@link Palette.Swatch} swatches.
+    /// This is useful for testing, or if you want to resurrect a {@link Palette} instance from a
+    /// list of swatches. Will return null if the {@code swatches} is null.
+    ///
+    /// - Parameter swatches: swatchs
+    /// - Returns: Palettes
+    public static func from(_ swatches: [Swatch]) -> Palette? {
+        // FIXME: Error handling
+        return try! Builder(swatches).generate()
+    }
+    
+    /// @deprecated Use {@link Builder} to generate the Palette.
+    ///
+    /// - Parameter bitmap: bitmap
+    /// - Returns: palette
+    @available(*, message: "deprecated Use {@link Builder} to generate the Palette.")
+    public static func generate(_ bitmap: Bitmap) -> Palette {
+        return from(bitmap).generate()
+    }
+    
+    /// @deprecated Use {@link Builder} to generate the Palette.
+    ///
+    /// - Parameters:
+    ///   - bitmap: bitmpa
+    ///   - numColors: numColors
+    /// - Returns: palette
+    @available(*, message: "deprecated Use {@link Builder} to generate the Palette.")
+    public static func generate(_ bitmap: Bitmap, _ numColors: Int) -> Palette {
+        return from(bitmap).maximumColorCount(numColors).generate()
+    }
+    
+    /// @deprecated Use {@link Builder} to generate the Palette.
+    ///
+    /// - Parameter bitmap: bitmap
+    @available(*, message: "deprecated Use {@link Builder} to generate the Palette.")
+    public static func generate(_ bitmap: Bitmap, _ async: ((Bitmap, Palette) -> Void)?) {
+        return from(bitmap).generate({ p in
+            async?(bitmap, p)
+        })
+    }
+    
+    /// @deprecated Use {@link Builder} to generate the Palette.
+    ///
+    /// - Parameters:
+    ///   - bitmap: bitmap
+    ///   - numColors: numColors
+    ///   - async: callback
+    /// - Notes: @deprecated Use {@link Builder} to generate the Palette.
+    @available(*, message: "deprecated Use {@link Builder} to generate the Palette.")
+    public static func generate(_ bitmap: Bitmap, _ numColors: Int, _ async: ((Bitmap, Palette) -> Void)?) {
+        return from(bitmap).maximumColorCount(numColors).generate({ (p) in
+            async?(bitmap, p)
+        })
+    }
+    
+    private var swatches: [Swatch]
+    private var targets: [Target]
+    
+    private var selectedSwatches: [Target: Swatch] = [:]
+    private var usedColors: [Int: Bool] = [:]
+    
+    private var dominantSwatch: Swatch?
+    
+    init(_ swatches: [Swatch], _ targets: [Target]) {
+        self.swatches = swatches
+        self.targets = targets
+    
+        dominantSwatch = findDominantSwatch()
+    }
+    
+    /// Returns all of the swatches which make up the palette.
+    ///
+    /// - Returns: all of the swatches which make up the palette.
+    public func getSwatches() -> [Swatch] {
+        return swatches
+    }
 
+    /// Returns the targets used to generate this palette.
+    ///
+    /// - Returns: the targets used to generate this palette.
+    public func getTargets() -> [Target] {
+        return targets
+    }
+    
+    /// Returns the most vibrant swatch in the palette. Might be null.
+    ///
+    /// - Returns: the most vibrant swatch in the palette. Might be null.
+    /// - Notes: see Target#VIBRANT
+    public func getVibrantSwatch() -> Swatch? {
+        return getSwatchForTarget(Target.vibrant)
+    }
+    
+    /// Returns a light and vibrant swatch from the palette. Might be null.
+    ///
+    /// - Returns: a light and vibrant swatch from the palette. Might be null.
+    /// - Notes: see Target#LIGHT_VIBRANT
+    public func getLightVibrantSwatch() -> Swatch? {
+        return getSwatchForTarget(Target.lightVibrant)
+    }
+    
+    /// Returns a dark and vibrant swatch from the palette. Might be null.
+    ///
+    /// - Returns: a dark and vibrant swatch from the palette. Might be null.
+    /// - Notes: see Target#DARK_VIBRANT
+    public func getDarkVibrantSwatch() -> Swatch? {
+        return getSwatchForTarget(Target.darkVibrant)
+    }
+    
+    /// Returns a muted swatch from the palette. Might be null.
+    ///
+    /// - Returns: a muted swatch from the palette. Might be null.
+    /// - Notes: see Target#MUTED
+    public func getMutedSwatch() -> Swatch? {
+        return getSwatchForTarget(Target.muted)
+    }
+    
+    /// Returns a muted and light swatch from the palette. Might be null.
+    ///
+    /// - Returns: a muted and light swatch from the palette. Might be null.
+    /// - Notes: see Target#LIGHT_MUTED
+    public func getLightMutedSwatch() -> Swatch? {
+        return getSwatchForTarget(Target.lightMuted)
+    }
+    
+    /// Returns a muted and dark swatch from the palette. Might be null.
+    ///
+    /// - Returns: a muted and dark swatch from the palette. Might be null.
+    /// - Notes: see Target#DARK_MUTED
+    public func getDarkMutedSwatch() -> Swatch? {
+        return getSwatchForTarget(Target.darkMuted)
+    }
+    
+    /// Returns the most vibrant color in the palette as an RGB packed int.
+    ///
+    /// - Parameter defaultColor: value to return if the swatch isn't available
+    /// - Returns: the most vibrant color in the palette as an RGB packed int.
+    /// - Notes: see #getVibrantSwatch()
+    public func getVibrantColor(_ defaultColor: Int) -> Int {
+        return getColorForTarget(Target.vibrant, defaultColor)
+    }
+    
+    /// Returns a light and vibrant color from the palette as an RGB packed int.
+    ///
+    /// - Parameter defaultColor: value to return if the swatch isn't available
+    /// - Returns: a light and vibrant color from the palette as an RGB packed int.
+    /// - Notes: see #getLightVibrantSwatch()
+    public func getLightVibrantColor(_ defaultColor: Int) -> Int {
+        return getColorForTarget(Target.lightVibrant, defaultColor)
+    }
+    
+    /// Returns a dark and vibrant color from the palette as an RGB packed int.
+    ///
+    /// - Parameter defaultColor: defaultColor value to return if the swatch isn't available
+    /// - Returns: a dark and vibrant color from the palette as an RGB packed int.
+    /// - Notes: see #getDarkVibrantSwatch()
+    public func getDarkVibrantColor(_ defaultColor: Int) -> Int {
+        return getColorForTarget(Target.darkVibrant, defaultColor)
+    }
+    
+    /// Returns a muted color from the palette as an RGB packed int.
+    ///
+    /// - Parameter defaultColor: value to return if the swatch isn't available
+    /// - Returns:  a muted color from the palette as an RGB packed int.
+    /// - Notes: see #getMutedSwatch()
+    public func getMutedColor(_ defaultColor: Int) -> Int {
+        return getColorForTarget(Target.muted, defaultColor)
+    }
+
+    /// Returns a muted and light color from the palette as an RGB packed int.
+    ///
+    /// - Parameter defaultColor: value to return if the swatch isn't available
+    /// - Returns: a muted and light color from the palette as an RGB packed int.
+    /// - Notes: see #getLightMutedSwatch()
+    public func getLightMutedColor(_ defaultColor: Int) -> Int {
+        return getColorForTarget(Target.lightMuted, defaultColor)
+    }
+
+    /// Returns a muted and dark color from the palette as an RGB packed int.
+    ///
+    /// - Parameter defaultColor: value to return if the swatch isn't available
+    /// - Returns: a muted and dark color from the palette as an RGB packed int.
+    /// - Notes: see #getDarkMutedSwatch()
+    public func getDarkMutedColor(_ defaultColor: Int) -> Int {
+        return getColorForTarget(Target.darkMuted, defaultColor)
+    }
+
+    /// Returns the selected swatch for the given target from the palette, or {@code null} if one
+    /// could not be found.
+    ///
+    /// - Parameter target: given target
+    /// - Returns: selected swatch
+    public func getSwatchForTarget(_ target: Target) -> Swatch? {
+        return selectedSwatches[target]
+    }
+
+    /// Returns the selected color for the given target from the palette as an RGB packed int.
+    ///
+    /// - Parameters:
+    ///   - target: given target
+    ///   - defaultColor: value to return if the swatch isn't available
+    /// - Returns: the selected color for the given target from the palette as an RGB packed int.
+    public func getColorForTarget(_ target: Target, _ defaultColor: Int) -> Int {
+        let swatch = getSwatchForTarget(target)
+        return swatch?.getRgb() ?? defaultColor
+    }
+    
+    /// Returns the dominant swatch from the palette.
+    /// <p>The dominant swatch is defined as the swatch with the greatest population (frequency)
+    /// within the palette.</p>
+    ///
+    /// - Returns: Returns the dominant swatch from the palette.
+    public func getDominantSwatch() -> Swatch? {
+        return dominantSwatch
+    }
+    
+    /// Returns the color of the dominant swatch from the palette, as an RGB packed int.
+    ///
+    /// - Parameter defaultColor: defaultColor value to return if the swatch isn't available
+    /// - Returns: the color of the dominant swatch from the palette, as an RGB packed int.
+    /// - Notes: #getDominantSwatch()
+    public func getDominantColor(_ defaultColor: Int) -> Int {
+        return dominantSwatch?.getRgb() ?? defaultColor
+    }
+    
+    func generate() {
+        // We need to make sure that the scored targets are generated first. This is so that
+        // inherited targets have something to inherit from
+        for target in targets {
+            target.normalizeWeights()
+            selectedSwatches[target] = generateScoredTarget(target)
+        }
+        // We now clear out the used colors
+        usedColors.removeAll()
+    }
+    
+    private func generateScoredTarget(_ target: Target) -> Swatch? {
+        let maxScoreSwatch = getMaxScoredSwatchForTarget(target)
+        if maxScoreSwatch != nil, target.isExclusive {
+            // If we have a swatch, and the target is exclusive, add the color to the used list
+            usedColors[maxScoreSwatch!.getRgb()] = true
+        }
+        return maxScoreSwatch
+    }
+    
+    private func getMaxScoredSwatchForTarget(_ target: Target) -> Swatch? {
+        var maxScore = Float(0)
+        var maxScoreSwatch: Swatch?
+        for swatch in swatches {
+            if (shouldBeScoredForTarget(swatch, target)) {
+                let score = generateScore(swatch, target)
+                if (maxScoreSwatch == nil || score > maxScore) {
+                    maxScoreSwatch = swatch
+                    maxScore = score
+                }
+            }
+        }
+        return maxScoreSwatch
+    }
+    
+    private func shouldBeScoredForTarget(_ swatch: Swatch, _ target: Target) -> Bool {
+        // Check whether the HSL values are within the correct ranges, and this color hasn't
+        // been used yet.
+        var hsl = swatch.getHsl()
+        return hsl[1] >= target.getMinimumSaturation() && hsl[1] <= target.getMaximumSaturation()
+            && hsl[2] >= target.getMinimumLightness() && hsl[2] <= target.getMaximumLightness()
+            && !(usedColors[swatch.getRgb()] ?? false)
+    }
+    
+    private func generateScore(_ swatch: Swatch, _ target: Target) -> Float {
+        let hsl = swatch.getHsl()
+        var saturationScore: Float = 0
+        var luminanceScore: Float = 0
+        var populationScore: Float = 0
+
+        let maxPopulation = dominantSwatch?.getPopulation() ?? 1
+    
+        if target.getSaturationWeight() > 0 {
+            saturationScore = target.getSaturationWeight() * (1 - abs(hsl[1] - target.getTargetSaturation()))
+        }
+        if target.getLightnessWeight() > 0 {
+            luminanceScore = target.getLightnessWeight() * (1 - abs(hsl[2] - target.getTargetLightness()))
+        }
+        if target.getPopulationWeight() > 0 {
+            populationScore = target.getPopulationWeight() * (Float(swatch.getPopulation()) / Float(maxPopulation))
+        }
+        return saturationScore + luminanceScore + populationScore
+    }
+
+    private func findDominantSwatch() -> Swatch? {
+        var maxPop = Int.min
+        var maxSwatch: Swatch?
+        for swatch in swatches where swatch.getPopulation() > maxPop {
+            maxSwatch = swatch
+            maxPop = swatch.getPopulation()
+        }
+        return maxSwatch!
+    }
+    
+    private static func copyHslValues(_ color: Swatch) -> [Float] {
+        let newHsl = color.getHsl()
+        return newHsl
+    }
 }
 
 /// Listener to be used with {@link #generateAsync(Bitmap, PaletteAsyncListener)} or
@@ -392,7 +702,7 @@ extension Palette {
             targets.removeAll()
             return self
         }
-        /*
+        
         /// Generate and return the {@link Palette} synchronously.
         public func generate() -> Palette {
             /* final TimingLogger logger = LOG_TIMINGS
@@ -421,62 +731,72 @@ extension Palette {
                 let quantizer = ColorCutQuantizer(
                     getPixelsFromBitmap(bitmap),
                     maxColors,
-                    filters.isEmpty ? null : filters.toArray(new Filter[mFilters.size()]));
-        
+                    filters)
+    
                 // If created a new bitmap, recycle it
-                if (bitmap != mBitmap) {
-                    bitmap.recycle();
-                }
+                swatches = quantizer.getQuantizedColors()
         
-                swatches = quantizer.getQuantizedColors();
-        
-                if (logger != null) {
-                    logger.addSplit("Color quantization completed");
-                }
+                // FIXEME: Log
+//                if (logger != null) {
+//                    logger.addSplit("Color quantization completed");
+//                }
             } else {
                 // Else we're using the provided swatches
-                swatches = mSwatches;
+                swatches = self.swatches!
             }
-        
+ 
             // Now create a Palette instance
-            final Palette p = new Palette(swatches, mTargets);
+            let p = Palette(swatches, targets)
             // And make it generate itself
-            p.generate();
+            p.generate()
+            // FIXME: Log
+//            if (logger != null) {
+//                logger.addSplit("Created Palette");
+//                logger.dumpToLog();
+//            }
+            return p
+        }
         
-            if (logger != null) {
-                logger.addSplit("Created Palette");
-                logger.dumpToLog();
+        /// Generate the {@link Palette} asynchronously.
+        ///
+        /// - Parameter callBack: callBack
+        public func generate(_ async: ((Palette) -> Void)?) {
+            DispatchQueue.global(qos: .default).async {
+                let p = self.generate()
+                DispatchQueue.main.async {
+                    async?(p)
+                }
             }
-        
-            return p;
         }
         
-        private int[] getPixelsFromBitmap(Bitmap bitmap) {
-        final int bitmapWidth = bitmap.getWidth();
-        final int bitmapHeight = bitmap.getHeight();
-        final int[] pixels = new int[bitmapWidth * bitmapHeight];
-        bitmap.getPixels(pixels, 0, bitmapWidth, 0, 0, bitmapWidth, bitmapHeight);
+        private func getPixelsFromBitmap(_ bitmap: Bitmap)-> [Int] {
+            let width = Int(bitmap.width)
+            let height = Int(bitmap.height)
+            
+            var pixels = Array(repeating: 0, count: width * height)
+ 
+            bitmap.getPixels(&pixels, 0, width, 0, 0, width, height);
         
-        if (mRegion == null) {
-        // If we don't have a region, return all of the pixels
-        return pixels;
-        } else {
-        // If we do have a region, lets create a subset array containing only the region's
-        // pixels
-        final int regionWidth = mRegion.width();
-        final int regionHeight = mRegion.height();
-        // pixels contains all of the pixels, so we need to iterate through each row and
-        // copy the regions pixels into a new smaller array
-        final int[] subsetPixels = new int[regionWidth * regionHeight];
-        for (int row = 0; row < regionHeight; row++) {
-        System.arraycopy(pixels, ((row + mRegion.top) * bitmapWidth) + mRegion.left,
-        subsetPixels, row * regionWidth, regionWidth);
+            if (region == nil) {
+                // If we don't have a region, return all of the pixels
+                return pixels
+            } else {
+                // If we do have a region, lets create a subset array containing only the region's
+                // pixels
+                let regionWidth = Int(region!.width)
+                let regionHeight = Int(region!.height)
+                // pixels contains all of the pixels, so we need to iterate through each row and
+                // copy the regions pixels into a new smaller array
+                var subsetPixels = Array(repeating: 0, count: regionWidth * regionHeight)
+                for row in 0..<regionHeight {
+                    let startIndex = row * regionWidth
+                    let endIndex = startIndex + regionWidth
+                    subsetPixels[startIndex..<endIndex] = pixels[startIndex..<endIndex]
+                }
+                return subsetPixels
+            }
         }
-        return subsetPixels;
-        }
-        }
-        */
-    
+ 
         /// Scale the bitmap down as needed.
         private func scaleBitmapDown(_ bitmap: Bitmap) -> Bitmap {
             var scaleRatio: Double = -1
@@ -502,77 +822,6 @@ extension Palette {
         }
     }
 }
-    
-
-    
-    /**
-
- 
-    
-
-    
-
-
-    
-
-
-
-    /**
-     * Generate the {@link Palette} asynchronously. The provided listener's
-     * {@link PaletteAsyncListener#onGenerated} method will be called with the palette when
-     * generated.
-     */
-    @NonNull
-    public AsyncTask<Bitmap, Void, Palette> generate(final PaletteAsyncListener listener) {
-    if (listener == null) {
-    throw new IllegalArgumentException("listener can not be null");
-    }
-    
-    return new AsyncTask<Bitmap, Void, Palette>() {
-    @Override
-    protected Palette doInBackground(Bitmap... params) {
-    try {
-    return generate();
-    } catch (Exception e) {
-    Log.e(LOG_TAG, "Exception thrown during async generate", e);
-    return null;
-    }
-    }
-    
-    @Override
-    protected void onPostExecute(Palette colorExtractor) {
-    listener.onGenerated(colorExtractor);
-    }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, mBitmap);
-    }
-    
-    private int[] getPixelsFromBitmap(Bitmap bitmap) {
-    final int bitmapWidth = bitmap.getWidth();
-    final int bitmapHeight = bitmap.getHeight();
-    final int[] pixels = new int[bitmapWidth * bitmapHeight];
-    bitmap.getPixels(pixels, 0, bitmapWidth, 0, 0, bitmapWidth, bitmapHeight);
-    
-    if (mRegion == null) {
-    // If we don't have a region, return all of the pixels
-    return pixels;
-    } else {
-    // If we do have a region, lets create a subset array containing only the region's
-    // pixels
-    final int regionWidth = mRegion.width();
-    final int regionHeight = mRegion.height();
-    // pixels contains all of the pixels, so we need to iterate through each row and
-    // copy the regions pixels into a new smaller array
-    final int[] subsetPixels = new int[regionWidth * regionHeight];
-    for (int row = 0; row < regionHeight; row++) {
-    System.arraycopy(pixels, ((row + mRegion.top) * bitmapWidth) + mRegion.left,
-    subsetPixels, row * regionWidth, regionWidth);
-    }
-    return subsetPixels;
-    }
-    }
-
-}
-*/
 
 /// A Filter provides a mechanism for exercising fine-grained control over which colors
 /// are valid within a resulting {@link Palette}.

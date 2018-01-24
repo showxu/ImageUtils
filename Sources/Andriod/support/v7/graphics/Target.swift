@@ -419,3 +419,14 @@ extension Target: Equatable {
             lhs.isExclusive == rhs.isExclusive
     }
 }
+
+extension Target: Hashable {
+    
+    public var hashValue: Int {
+        var hash = isExclusive ? 13 : 0
+        for i in 0...2 {
+            hash += Int(saturationTargets[i] * lightnessTargets[i] * weights[i] * 21)
+        }
+        return hash
+    }
+}
