@@ -223,12 +223,11 @@ public final class Target {
     
     func normalizeWeights() {
         var sum: Float = 0
-        
         for weight in weights where weight > 0 {
             sum += weight
         }
         if (sum != 0) {
-            for (i, _) in weights.enumerated() {
+            for i in weights.indices {
                 weights[i] /= sum
             }
         }
@@ -333,7 +332,7 @@ extension Target {
          * Set the maximum lightness value for this target.
          * @value @FloatRange(from = 0, to = 1)
          */
-        public func setMaximumLightness(_ value: Float) -> Builder{
+        public func setMaximumLightness(_ value: Float) -> Builder {
             target.lightnessTargets[indexMax] = value
             return self
         }
@@ -412,21 +411,17 @@ extension Target {
 extension Target: Equatable {
     
     public static func ==(lhs: Target, rhs: Target) -> Bool {
-        return
-            lhs.saturationTargets == rhs.saturationTargets &&
-            lhs.lightnessTargets == rhs.lightnessTargets &&
-            lhs.weights == rhs.weights &&
-            lhs.isExclusive == rhs.isExclusive
+        let lh = unsafeBitCast(lhs, to: UnsafePointer<Target>.self)
+        let rh = unsafeBitCast(rhs, to: UnsafePointer<Target>.self)
+        return lh == rh
     }
 }
 
 extension Target: Hashable {
     
     public var hashValue: Int {
-        var hash = isExclusive ? 13 : 0
-        for i in 0...2 {
-            hash += Int(saturationTargets[i] * lightnessTargets[i] * weights[i] * 21)
-        }
-        return hash
+        let ptr = unsafeBitCast(self, to: UnsafePointer<Target>.self)
+        let hashValue = ptr.hashValue
+        return hashValue
     }
 }

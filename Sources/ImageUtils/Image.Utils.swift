@@ -42,14 +42,14 @@ extension Image {
     }
     
     final public class func resize(_ image: Image, dstWidth: Int, dstHeight: Int, filter: Bool = false) -> Image? {
-        return resize(image, to: Size.init(width: dstWidth, height: dstHeight), filter: filter)
+        return resize(image, to: Size(width: dstWidth, height: dstHeight), filter: filter)
     }
 
     final public class func resize(_ image: Image, to dstSize: Size, filter: Bool = false) -> Image? {
         let newRect = Rect(origin: .zero, size: dstSize).integral
         guard let cgImage = image.cgImage else { return nil }
     
-        UIGraphicsBeginImageContextWithOptions(dstSize, false, Screen.main.scale)
+        UIGraphicsBeginImageContextWithOptions(dstSize, false, image.scale)
         defer {
             UIGraphicsEndImageContext()
         }
@@ -64,7 +64,7 @@ extension Image {
         
         guard let cgImageNew = ctx?.makeImage() else { return nil }
         // Get the resized image from the context and a UIImage
-        let newImage = UIImage(cgImage: cgImageNew)
+        let newImage = Image(cgImage: cgImageNew)
 
         return newImage
     }
@@ -109,19 +109,21 @@ extension CGImage {
     }
     
     public class func getBitmapContext(
-        _ cgImage: CGImage,
-        _ bitmapInfo: (CGImage) -> UInt32 = { _ in
-            return CGImageAlphaInfo.premultipliedLast.rawValue
-        }) -> CGContext? {
+            _ cgImage: CGImage,
+            _ dataProvider: ((CGImage) -> UnsafeMutablePointer<CChar>)? = nil,
+            _ bitmapInfo: (CGImage) -> UInt32 = { _ in
+                return CGImageAlphaInfo.premultipliedFirst.rawValue
+            }) -> CGContext? {
         guard let colorSpace = cgImage.colorSpace else { return nil }
         
         let width = cgImage.width
         let height = cgImage.height
         let bitsPerComponent = cgImage.bitsPerComponent
-        let bytesPerRow = cgImage.bytesPerRow
+        let bitsPerPixel = cgImage.bitsPerPixel
+        let bytesPerRow = bitsPerPixel / bitsPerComponent * width // cgImage.bytesPerRow is wrong?
         
         let ctx = CGContext(
-            data: nil,
+            data: dataProvider?(cgImage).deinitialize(),
             width: width,
             height: height,
             bitsPerComponent: bitsPerComponent,
@@ -134,9 +136,9 @@ extension CGImage {
         return ctx
     }
     
-    public func getCGImage(_ bitmap: UnsafeMutableRawPointer?,
-                           bitmapContext: CGContext?,
-                           release: ((UnsafeMutableRawPointer?) -> Void)?) -> CGImage? {
+    public class func getCGImage(_ bitmap: UnsafeMutableRawPointer?,
+                                 bitmapContext: CGContext?,
+                                 release: ((UnsafeMutableRawPointer?) -> Void)?) -> CGImage? {
         let releasePtr = Unmanaged<AnyObject>.passRetained(release as AnyObject).toOpaque()
         guard
             let bitmap = bitmap,

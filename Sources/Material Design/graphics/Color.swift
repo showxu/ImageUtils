@@ -163,9 +163,9 @@ extension Color {
     /// - Returns: A color-int from red, green, blue float components
     public class func argb(_ alpha: Int = 255, _ red: Int, _ green: Int, _ blue: Int) -> Int {
         #if arch(arm) || arch(i386)
-            let a: Int64 = (Int64(alpha) << 24) & 0xff000000 // Shift alpha 24-bits and mask out other stuff
+            let a: Int64 = (Int64(alpha) << 24) & 0x0ff000000 // Shift alpha 24-bits and mask out other stuff
         #else
-            let a = (alpha << 24) & 0xff000000
+            let a = (alpha << 24) & 0x0ff000000
         #endif
         let r = (red << 16) & 0x00ff0000 // Shift red 16-bits and mask out other stuff
         let g = (green << 8) & 0x0000ff00 // Shift Green 8-bits and mask out other stuff
@@ -173,10 +173,10 @@ extension Color {
         
         // watchOS 32-bit Int overflow
         #if arch(arm) || arch(i386)
-            let rgb: Int64 = 0xff00000000 | a | Int64(r|g|b) // 0xff000000 for 100% Alpha. Bitwise OR everything together.
+            let rgb: Int64 = a | Int64(r|g|b) // 0xff000000 for 100% Alpha. Bitwise OR everything together.
             return Int(rgb)
         #else
-            let rgb = 0xff00000000 | a | r | g | b
+            let rgb = a | r | g | b
             return rgb
         #endif
     }

@@ -47,9 +47,6 @@ public final class Palette {
     static let minContrastTitleText: Float = 3.0
     static let minContrastBodyText: Float = 4.5
     
-    static let logTag = "Palette"
-    static let logTimings = false
-    
     /// Start generating a {@link Palette} with the returned {@link Builder} instance.
     ///
     /// - Parameter bitmap: bitmap
@@ -353,7 +350,7 @@ public final class Palette {
             maxSwatch = swatch
             maxPop = swatch.getPopulation()
         }
-        return maxSwatch!
+        return maxSwatch
     }
     
     private static func copyHslValues(_ color: Swatch) -> [Float] {
@@ -705,18 +702,11 @@ extension Palette {
         
         /// Generate and return the {@link Palette} synchronously.
         public func generate() -> Palette {
-            /* final TimingLogger logger = LOG_TIMINGS
-                ? new TimingLogger(LOG_TAG, "Generation")
-                : null; */
             var swatches: Array<Swatch>
             if (bitmap != nil) {
                 // We have a Bitmap so we need to use quantization to reduce the number of colors
                 // First we'll scale down the bitmap if needed
                 let bitmap = scaleBitmapDown(self.bitmap!)
-                // FIXME: Log
-                /* if (logger != null) {
-                    logger.addSplit("Processed Bitmap");
-                } */
                 var region = self.region
                 if (bitmap != self.bitmap && region != nil) {
                     // If we have a scaled bitmap and a selected region, we need to scale down the
@@ -732,28 +722,16 @@ extension Palette {
                     getPixelsFromBitmap(bitmap),
                     maxColors,
                     filters)
-    
                 // If created a new bitmap, recycle it
                 swatches = quantizer.getQuantizedColors()
-        
-                // FIXEME: Log
-//                if (logger != null) {
-//                    logger.addSplit("Color quantization completed");
-//                }
             } else {
                 // Else we're using the provided swatches
                 swatches = self.swatches!
             }
- 
             // Now create a Palette instance
             let p = Palette(swatches, targets)
             // And make it generate itself
             p.generate()
-            // FIXME: Log
-//            if (logger != null) {
-//                logger.addSplit("Created Palette");
-//                logger.dumpToLog();
-//            }
             return p
         }
         
@@ -774,9 +752,8 @@ extension Palette {
             let height = Int(bitmap.height)
             
             var pixels = Array(repeating: 0, count: width * height)
- 
-            bitmap.getPixels(&pixels, 0, width, 0, 0, width, height);
-        
+            bitmap.getPixels(&pixels, 0, width, 0, 0, width, height)
+         
             if (region == nil) {
                 // If we don't have a region, return all of the pixels
                 return pixels
@@ -803,9 +780,9 @@ extension Palette {
             if resizeArea > 0 {
                 let bitmapArea = Int(bitmap.width * bitmap.height)
                 if bitmapArea > resizeArea {
-                    scaleRatio = sqrt(Double(resizeArea / bitmapArea))
+                    scaleRatio = sqrt(Double(resizeArea) / Double(bitmapArea))
                 }
-            } else if resizeMaxDimension > 0{
+            } else if resizeMaxDimension > 0 {
                 let maxDimension = max(bitmap.width, bitmap.height)
                 if maxDimension > CGFloat(resizeMaxDimension) {
                     scaleRatio = Double(resizeMaxDimension) / Double(maxDimension)

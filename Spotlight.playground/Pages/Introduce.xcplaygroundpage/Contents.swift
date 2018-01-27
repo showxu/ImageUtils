@@ -7,7 +7,7 @@
  1. Open **ImageUtils** playground in the **Project navigator**.
  1. Show the Debug Area (**View** → **Debug Area** → **Show Debug Area**).
  
- ----
+ ---
  ImageUtils is a cross-platform written in pure Swift for image processing and other useful toolkit, include
 
  ## Features:

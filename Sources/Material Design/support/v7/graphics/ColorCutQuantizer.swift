@@ -3,6 +3,9 @@
 //
 //
 
+import UIKit
+import libkern
+
 ///
 /// An color quantizer based on the Median-cut algorithm, but optimized for picking out distinct
 /// colors rather than representation colors.
@@ -17,10 +20,7 @@
 /// colors.
 ///
 final class ColorCutQuantizer {
-
-    private static let logTag = "ColorCutQuantizer"
-    private static var logTimings = false
-
+    
     static var componentRed: Int = -3;
     static var componentGreen: Int = -2;
     static var componentBlue: Int = -1;
@@ -43,21 +43,17 @@ final class ColorCutQuantizer {
     ///   - maxColors: maxColors The maximum number of colors that should be in the result palette.
     ///   - filters: filters Set of filters to use in the quantization stage
     init(_ pixels: [Int], _ maxColors: Int, _ filters: [PaletteFilter]) {
-        // mTimingLogger = LOG_TIMINGS ? new TimingLogger(LOG_TAG, "Creation") : null;
         self.filters = filters
         var pixels = pixels
-        var hist = Array(repeating: 0, count: 1 << (ColorCutQuantizer.quantizeWordMask * 3))
-        for i in pixels.indices {
-            let quantizedColor = ColorCutQuantizer.quantizeFromRgb888(pixels[i])
+        var hist = [Int](repeating: 0, count: 1 << (ColorCutQuantizer.quantizeWordWidth * 3))
+        
+        for (i, pixel) in pixels.enumerated() {
+            let quantizedColor = ColorCutQuantizer.quantizeFromRgb888(pixel)
             // Now update the pixel value to the quantized value
             pixels[i] = quantizedColor
             // And update the histogram
             hist[quantizedColor] += 1
         }
-        // FIXME: Log
-//        if (LOG_TIMINGS) {
-//            mTimingLogger.addSplit("Histogram created");
-//        }
         // Now let's count the number of distinct colors
         var distinctColorCount = 0
         for color in hist.indices {
@@ -70,24 +66,15 @@ final class ColorCutQuantizer {
                 distinctColorCount += 1
             }
         }
-       
-        // FIXME: Log
-//        if (LOG_TIMINGS) {
-//            mTimingLogger.addSplit("Filtered colors and distinct colors counted");
-//        }
-    
         // Now lets go through create an array consisting of only distinct colors
-        var colors = Array(repeating: 0, count: distinctColorCount)
-        var distinctColorIndex = 0;
+        var colors = [Int]()
+        colors.reserveCapacity(distinctColorCount)
         for color in hist.indices where hist[color] > 0 {
-            colors[distinctColorIndex] = color
-            distinctColorIndex += 1
+            colors.append(color)
         }
-        // FIXME: Log
-//        if (LOG_TIMINGS) {
-//            mTimingLogger.addSplit("Distinct colors copied into array");
-//        }
-    
+        self.histogram = hist
+        self.colors = colors
+        
         if (distinctColorCount <= maxColors) {
             // The image has fewer colors than the maximum requested, so just return the colors
             quantizedColors = []
@@ -97,22 +84,10 @@ final class ColorCutQuantizer {
                     population: hist[color])
                 )
             }
-            // FIXME: Log
-//            if (LOG_TIMINGS) {
-//                mTimingLogger.addSplit("Too few colors present. Copied to Swatches");
-//                mTimingLogger.dumpToLog();
-//            }
         } else {
             // We need use quantization to reduce the number of colors
             quantizedColors = quantizePixels(maxColors)
-            // FIXME: Log
-//            if (LOG_TIMINGS) {
-//                mTimingLogger.addSplit("Quantized colors computed");
-//                mTimingLogger.dumpToLog();
-//            }
         }
-        self.histogram = hist
-        self.colors = colors
     }
     
     /// Return the list of quantized colors
@@ -126,8 +101,9 @@ final class ColorCutQuantizer {
         // Create the priority queue which is sorted by volume descending. This means we always
         // split the largest box in the queue
         var pq: [Vbox] = []
+        pq.reserveCapacity(maxColors)
         // To start, offer a box which contains all of the colors
-        pq.append(Vbox(self, 0, colors.count - 1))
+        pq.append(Vbox(self, 0, max(0, colors.count - 1)))
         // Now go through the boxes, splitting them until we have reached maxColors or there are no
         // more boxes to split
         splitBoxes(&pq, maxColors, sort: >)
@@ -150,20 +126,12 @@ final class ColorCutQuantizer {
             if (vbox.canSplit()) {
                 // First split the box, and offer the result
                 queue.append(vbox.splitBox())
-                // FIXME: Log
-//                if (LOG_TIMINGS) {
-//                    mTimingLogger.addSplit("Box split");
-//                }
                 // Then offer the box back
                 queue.append(vbox)
                 if let comparator = by {
                     queue.sort(by: comparator)
                 }
             } else {
-                // FIXME: Log
-//                if (LOG_TIMINGS) {
-//                    mTimingLogger.addSplit("All boxes split");
-//                }
                 // If we get here then there are no more boxes to split, so return
                 return
             }
@@ -179,6 +147,9 @@ final class ColorCutQuantizer {
                 // we check again here
                 colors.append(swatch)
             }
+            let v = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+            v.backgroundColor = Color(hex: swatch.getRgb())
+            print(v)
         }
         return colors
     }
@@ -197,6 +168,10 @@ final class ColorCutQuantizer {
         private var minGreen: Int = .max, maxGreen: Int = .min
         private var minBlue: Int = .max, maxBlue: Int = .min
         
+        private static var ordinal = Int32(0)
+        
+        let hashValue = Int(OSAtomicIncrement32(&Vbox.ordinal))
+        
         init(_ quantizer: ColorCutQuantizer, _ lower: Int, _ upper: Int) {
             colorCutQuantizer = quantizer
             lowerIndex = lower
@@ -206,7 +181,10 @@ final class ColorCutQuantizer {
         }
         
         func getVolume() -> Int {
-            return (maxRed - minRed + 1) * (maxGreen - minGreen + 1) * (maxBlue - minBlue + 1)
+            let r = Double(maxRed - minRed + 1)
+            let g = Double(maxGreen - minGreen + 1)
+            let b = Double(maxBlue - minBlue + 1)
+            return Int(r * g * b)
         }
         
         func canSplit() -> Bool {
@@ -219,45 +197,31 @@ final class ColorCutQuantizer {
         
         /// Recomputes the boundaries of this box to tightly fit the colors within the box.
         mutating func fitBox() {
-            var colors = colorCutQuantizer.colors
-            var hist = colorCutQuantizer.histogram
             // Reset the min and max to opposite values
-            var minRed = Int.max, minGreen = Int.max, minBlue = Int.max
-            var maxRed = Int.min, maxGreen = Int.min, maxBlue = Int.min
-            var count = 0
+            minRed = 0xff
+            minGreen = 0xff
+            minBlue = 0xff
+            maxRed = 0x0
+            maxGreen = 0x0
+            maxBlue = 0x0
+
+            population = colorCutQuantizer.colors[lowerIndex...upperIndex].reduce(0) {
+                $0 + colorCutQuantizer.histogram[$1]
+            }
             
-            for i in lowerIndex...upperIndex {
-                let color = colors[i]
-                count += hist[color]
+            for i in lowerIndex...upperIndex where colorCutQuantizer.colors.count != 0 {
+                let color = colorCutQuantizer.colors[i]
                 let r = quantizedRed(color)
                 let g = quantizedGreen(color)
                 let b = quantizedBlue(color)
-                if r > maxRed {
-                    maxRed = r
-                }
-                if r < minRed {
-                    minRed = r
-                }
-                if g > maxGreen {
-                    maxGreen = g
-                }
-                if g < minGreen {
-                    minGreen = g
-                }
-                if b > maxBlue {
-                    maxBlue = b
-                }
-                if b < minBlue {
-                    minBlue = b
-                }
+                
+                maxRed = max(maxRed, r)
+                minRed = min(minRed, r)
+                maxGreen = max(maxGreen, g)
+                minGreen = min(minGreen, g)
+                maxBlue = max(maxBlue, b)
+                minBlue = min(minBlue, b)
             }
-            self.minRed = minRed
-            self.maxRed = maxRed
-            self.minGreen = minGreen
-            self.maxGreen = maxGreen
-            self.minBlue = minBlue
-            self.maxBlue = maxBlue
-            self.population = count
         }
         
         /// Split this color box at the mid-point along its longest dimension
@@ -286,9 +250,9 @@ final class ColorCutQuantizer {
             let greenLength = maxGreen - minGreen
             let blueLength = maxBlue - minBlue
         
-            if (redLength >= greenLength && redLength >= blueLength) {
+            if (redLength >= greenLength) && (redLength >= blueLength) {
                 return ColorCutQuantizer.componentRed
-            } else if (greenLength >= redLength && greenLength >= blueLength) {
+            } else if (greenLength >= redLength) && (greenLength >= blueLength) {
                 return ColorCutQuantizer.componentGreen
             } else {
                 return ColorCutQuantizer.componentBlue
@@ -303,10 +267,11 @@ final class ColorCutQuantizer {
         ///
         /// - Returns: the index of the colors array to split from
         func findSplitPoint() -> Int {
-            let longestDimension = getLongestColorDimension();
+            // FIXME: Dimension
+            let longestDimension = getLongestColorDimension()
             var colors = colorCutQuantizer.colors
-            let hist = colorCutQuantizer.histogram;
-        
+            let hist = colorCutQuantizer.histogram
+            
             // We need to sort the colors in this box based on the longest color dimension.
             // As we can't use a Comparator to define the sort logic, we modify each color so that
             // its most significant is the desired dimension
@@ -316,7 +281,22 @@ final class ColorCutQuantizer {
             colors[lowerIndex...upperIndex].sort()
             // Now revert all of the colors so that they are packed as RGB again
             ColorCutQuantizer.modifySignificantOctet(&colors, longestDimension, lowerIndex, upperIndex);
-        
+            
+            colorCutQuantizer.colors = colors
+            
+            if longestDimension == ColorCutQuantizer.componentRed {
+                colors[lowerIndex...upperIndex].sort() {
+                    ColorCutQuantizer.quantizedRed($0) < ColorCutQuantizer.quantizedRed($1)
+                }
+            } else if longestDimension == ColorCutQuantizer.componentGreen {
+                colors[lowerIndex...upperIndex].sort() {
+                    ColorCutQuantizer.quantizedGreen($0) < ColorCutQuantizer.quantizedGreen($1)
+                }
+            } else  {
+                colors[lowerIndex...upperIndex].sort() {
+                    ColorCutQuantizer.quantizedBlue($0) < ColorCutQuantizer.quantizedBlue($1)
+                }
+            }
             let midPoint = population / 2
             var count = 0
             for i in lowerIndex...upperIndex {
@@ -353,6 +333,8 @@ final class ColorCutQuantizer {
             let greenMean = Int(round(Float(greenSum) / Float(totalPopulation)))
             let blueMean = Int(round(Float(blueSum) / Float(totalPopulation)))
         
+            let v = UIView(frame: .init(origin: .zero, size: .init(width: 200, height: 200)))
+            v.backgroundColor = Color(hex: ColorCutQuantizer.approximateToRgb888(redMean, greenMean, blueMean))
             return Palette.Swatch(
                 color: ColorCutQuantizer.approximateToRgb888(redMean, greenMean, blueMean),
                 population: totalPopulation
@@ -408,7 +390,7 @@ final class ColorCutQuantizer {
     
     private func shouldIgnoreColor(_ rgb: Int, _ hsl: [Float]) -> Bool {
         for filter in filters where filters.count > 0 {
-            if filter.isAllowed(rgb, hsl) {
+            if !filter.isAllowed(rgb, hsl) {
                 return true
             }
         }
@@ -485,12 +467,32 @@ final class ColorCutQuantizer {
 extension ColorCutQuantizer.Vbox: Comparable {
     
     /// Comparator which sorts {@link Vbox} instances based on their volume, in descending order
-    static func <(lhs: ColorCutQuantizer.Vbox, rhs: ColorCutQuantizer.Vbox) -> Bool {
-        return rhs.getVolume() - lhs.getVolume() < 0
-    }
-    
-    static func ==(lhs: ColorCutQuantizer.Vbox, rhs: ColorCutQuantizer.Vbox) -> Bool {
-        return rhs.getVolume() - lhs.getVolume() == 0
-    }
+//    static func <(lhs: ColorCutQuantizer.Vbox, rhs: ColorCutQuantizer.Vbox) -> Bool {
+//        return lhs.getVolume() < rhs.getVolume()
+//    }
+//
+//    static func ==(lhs: ColorCutQuantizer.Vbox, rhs: ColorCutQuantizer.Vbox) -> Bool {
+//        return rhs.getVolume() - lhs.getVolume() == 0
+//    }
+}
+
+private func ==(lhs: ColorCutQuantizer.Vbox, rhs: ColorCutQuantizer.Vbox) -> Bool {
+    return lhs.hashValue == rhs.hashValue
+}
+
+private func <=(lhs: ColorCutQuantizer.Vbox, rhs: ColorCutQuantizer.Vbox) -> Bool {
+    return lhs.getVolume() <= rhs.getVolume()
+}
+
+private func >=(lhs: ColorCutQuantizer.Vbox, rhs: ColorCutQuantizer.Vbox) -> Bool {
+    return lhs.getVolume() >= rhs.getVolume()
+}
+
+private func <(lhs: ColorCutQuantizer.Vbox, rhs: ColorCutQuantizer.Vbox) -> Bool {
+    return lhs.getVolume() < rhs.getVolume()
+}
+
+private func >(lhs: ColorCutQuantizer.Vbox, rhs: ColorCutQuantizer.Vbox) -> Bool {
+    return lhs.getVolume() > rhs.getVolume()
 }
 

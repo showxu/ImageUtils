@@ -7,7 +7,7 @@ import CoreGraphics.CGError
 
 extension Color {
     
-    public convenience init(hex: Int, alpha: Float) {
+    public convenience init(hex: Int, alpha: Float = 1) {
         self.init(r: Color.red(hex), g: Color.green(hex), b: Color.blue(hex), a: alpha)
     }
     

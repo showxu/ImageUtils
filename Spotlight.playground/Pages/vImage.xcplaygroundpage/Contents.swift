@@ -4,10 +4,11 @@
 //: ## vImage
 
 import ImageUtils
+import UIKit
 
 //: **Image.Effects**
 
-let img = UIImage(named: "porche.png")
-Image.blur(light: img!)
+let preview = UIImage(named: "porsche-preview.jpg")
+Image.blur(light: preview!)
 
 //: [Next Page](@next)

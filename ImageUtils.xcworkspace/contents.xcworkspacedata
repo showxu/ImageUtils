@@ -5,6 +5,6 @@
       location = "group:/Users/alchemist/Developer/Repository/Github/0xxd0/ImageUtils/Spotlight.playground">
    </FileRef>
    <FileRef
-      location = "container:/Users/alchemist/Developer/Repository/Github/0xxd0/ImageUtils/ImageUtil.xcodeproj">
+      location = "group:ImageUtils.xcodeproj">
    </FileRef>
 </Workspace>

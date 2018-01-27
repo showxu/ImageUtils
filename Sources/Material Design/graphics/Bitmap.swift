@@ -27,13 +27,21 @@ extension Bitmap {
         // FIXME: check
         // checkHardware("unable to getPixels(), " + "pixel access is not supported on Config#HARDWARE bitmaps");
         if (width == 0 || height == 0) {
-            return; // nothing to do
+            return // nothing to do
         }
         // FIXME: check
         // checkPixelsAccess(x, y, width, height, offset, stride, pixels);
-        let data = CGImage.getContext(cgImage)?.data?.assumingMemoryBound(to: Int8.self)
+        let ctx = CGImage.getContext(cgImage)
+        let data = ctx?.data?.assumingMemoryBound(to: UInt8.self)
         for i in 0..<width * height where data != nil {
-            pixels[i] = Int(data![i])
+            let offset = i * 4
+            let a = data![offset]
+            let r = data![offset + 1]
+            let g = data![offset + 2]
+            let b = data![offset + 3]
+            let argb = Color.argb(Int(a), Int(r), Int(g), Int(b))
+
+            pixels[i] = argb
         }
     }
 }
