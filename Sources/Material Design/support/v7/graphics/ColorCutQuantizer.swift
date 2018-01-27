@@ -147,9 +147,6 @@ final class ColorCutQuantizer {
                 // we check again here
                 colors.append(swatch)
             }
-            let v = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-            v.backgroundColor = Color(hex: swatch.getRgb())
-            print(v)
         }
         return colors
     }
@@ -480,19 +477,6 @@ private func ==(lhs: ColorCutQuantizer.Vbox, rhs: ColorCutQuantizer.Vbox) -> Boo
     return lhs.hashValue == rhs.hashValue
 }
 
-private func <=(lhs: ColorCutQuantizer.Vbox, rhs: ColorCutQuantizer.Vbox) -> Bool {
-    return lhs.getVolume() <= rhs.getVolume()
-}
-
-private func >=(lhs: ColorCutQuantizer.Vbox, rhs: ColorCutQuantizer.Vbox) -> Bool {
-    return lhs.getVolume() >= rhs.getVolume()
-}
-
 private func <(lhs: ColorCutQuantizer.Vbox, rhs: ColorCutQuantizer.Vbox) -> Bool {
     return lhs.getVolume() < rhs.getVolume()
 }
-
-private func >(lhs: ColorCutQuantizer.Vbox, rhs: ColorCutQuantizer.Vbox) -> Bool {
-    return lhs.getVolume() > rhs.getVolume()
-}
-

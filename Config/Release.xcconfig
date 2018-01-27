@@ -1,5 +1,5 @@
 //
-//  Debug.xcconfig
+//  Release.xcconfig
 //  ImageUtils
 //
 //
@@ -7,5 +7,5 @@
 CODE_SIGN_IDENTITY =
 AUTHOR_NAME = 0xxd0
 PRODUCT_NAME = ImageUtils
-PRODUCT_BUNDLE_IDENTIFIER = com.$(AUTHOR_NAME).$(PRODUCT_NAME:c99extidentifier)
+PRODUCT_BUNDLE_IDENTIFIER = com.$(AUTHOR_NAME).$(PRODUCT_NAME:rfc1034identifier)
 INFOPLIST_FILE = $(SRCROOT)/Sources/Info.plist

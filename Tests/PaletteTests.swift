@@ -1,12 +1,12 @@
 //
-//  MaterialDesignTests.swift
+//  PaletteTests.swift
 //
 //
 
 import XCTest
 @testable import ImageUtils
 
-class MaterialDesignTests: XCTestCase {
+class PaletteTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -20,16 +20,16 @@ class MaterialDesignTests: XCTestCase {
     
     func testPalette() {
         let preview = UIImage(named: "preview.png",
-                              in: Bundle(for: MaterialDesignTests.self),
+                              in: Bundle(for: PaletteTests.self),
                               compatibleWith: nil)
         let palette = Palette.from(preview!).generate()
-        let swatches = palette.getSwatches()
-        let vibrant = Color(hex: palette.getVibrantColor(0))
-        let vibrantDark = Color(hex: palette.getDarkVibrantColor(0))
-        let vibrantLight = Color(hex: (palette.getLightVibrantColor(0)))
-        let muted = Color(hex: palette.getMutedColor(0))
-        let mutedDark = Color(hex: palette.getDarkMutedColor(0))
-        let mutedLight = Color(hex: palette.getLightMutedColor(0))
+        let _ = palette.getSwatches()
+        let _ = Color(hex: palette.getVibrantColor(0))
+        let _ = Color(hex: palette.getDarkVibrantColor(0))
+        let _ = Color(hex: (palette.getLightVibrantColor(0)))
+        let _ = Color(hex: palette.getMutedColor(0))
+        let _ = Color(hex: palette.getDarkMutedColor(0))
+        let _ = Color(hex: palette.getLightMutedColor(0))
     }
     
     func testPerformanceExample() {

@@ -34,7 +34,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "33C64E902014A537002DD382"
-               BuildableName = "ImageUtils Tests.xctest"
+               BuildableName = "ImageUtils iOS Tests.xctest"
                BlueprintName = "ImageUtils iOS Tests"
                ReferencedContainer = "container:ImageUtils.xcodeproj">
             </BuildableReference>
