@@ -752,7 +752,7 @@ extension Palette {
             let height = Int(bitmap.height)
             
             var pixels = Array(repeating: 0, count: width * height)
-            bitmap.getPixels(&pixels, 0, width, 0, 0, width, height)
+            bitmap.getPixels(&pixels, 0, 0, width, height)
          
             if (region == nil) {
                 // If we don't have a region, return all of the pixels
@@ -792,10 +792,10 @@ extension Palette {
                 // Scaling has been disabled or not needed so just return the Bitmap
                 return bitmap
             }
-            return Bitmap.createScaledBitmap(bitmap,
-                                             Int(ceil(Double(bitmap.width) * scaleRatio)),
-                                             Int(ceil(Double(bitmap.height) * scaleRatio)),
-                                             .high)!
+            return bitmap.scaled(to: CGSize(
+                width: Int(ceil(Double(bitmap.width) * scaleRatio)),
+                height: Int(ceil(Double(bitmap.height) * scaleRatio))
+            )) ?? bitmap
         }
     }
 }

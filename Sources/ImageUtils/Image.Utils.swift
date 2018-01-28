@@ -11,6 +11,13 @@
 
 extension Image {
     
+    final public func scaled(
+        to size: Size,
+        quality: CGInterpolationQuality = .high
+    ) -> Image? {
+        return Image(resize: self, to: size, quality: quality)
+    }
+    
     final public class func `init`(
         _ size: Size = .zero,
         color: Color = .clear,

@@ -4,23 +4,26 @@
 //
 
 #if os(macOS)
-    import AppKit.NSImage
+    import AppKit
+    
     public typealias Image = NSImage
     public typealias Screen = NSScreen
     public typealias Color = NSColor
-
+    
 #elseif os(iOS) || os(tvOS) || os(watchOS)
-    import UIKit.UIImage
+    import UIKit
+    
 #if os(iOS) || os(tvOS)
     public typealias Screen = UIScreen
+    
 #endif
     public typealias Image = UIImage
     public typealias Color = UIColor
+    
 #endif
+
 
 public typealias Point = CGPoint
 public typealias Size = CGSize
 public typealias Rect = CGRect
-
-
 
