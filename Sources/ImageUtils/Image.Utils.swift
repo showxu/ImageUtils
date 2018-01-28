@@ -11,17 +11,6 @@
 
 extension Image {
     
-    var width: CGFloat {
-        return size.width
-    }
-    
-    var height: CGFloat {
-        return size.height
-    }
-}
-
-extension Image {
-    
     #if os(iOS) || os(tvOS)
     final public class func build(_ size: CGSize = .zero,
                                   color: Color = .clear,
@@ -71,27 +60,7 @@ extension Image {
     #endif
 }
 
-extension CGImage {
-    
-    open var size: Size {
-        return Size(width: width, height: height)
-    }
-    
-    open var bytes: Int {
-        return bytesPerRow * height
-    }
-}
 
-extension CGContext {
-    
-    open var size: CGSize {
-        return CGSize(width: width, height: height)
-    }
-    
-    open var bytes: Int {
-        return bytesPerRow * height
-    }
-}
     
 extension CGImage {
     
