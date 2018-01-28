@@ -6,6 +6,7 @@
 ![](https://img.shields.io/badge/Carthage-✔-red.svg?colorA=24292e&colorB=24292e&style=flat)
 ![](https://img.shields.io/badge/SPM-✔-red.svg?colorA=24292e&colorB=24292e&style=flat)
 ![](https://img.shields.io/github/repo-size/0xxd0/ImageUtils.svg?colorA=24292e&colorB=24292e&style=flat)
+[![Join the chat at https://gitter.im/0xxd0/ImageUtils](https://badges.gitter.im/0xxd0/ImageUtils.svg)](https://gitter.im/0xxd0/ImageUtils?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 An elegant image utils & toolbox framework in pure Swift.
 
