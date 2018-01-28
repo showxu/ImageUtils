@@ -813,7 +813,7 @@ extension Palette {
                 // Scaling has been disabled or not needed so just return the Bitmap
                 return bitmap
             }
-            return bitmap.scaled(to: CGSize(
+            return bitmap.resized(to: CGSize(
                 width: Int(ceil(Double(bitmap.width) * scaleRatio)),
                 height: Int(ceil(Double(bitmap.height) * scaleRatio))
             )) ?? bitmap

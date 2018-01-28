@@ -14,8 +14,9 @@
  ## Features:
  1. [vImage](vImage)
      - Image Effects
- 2. [Material Design](Material\ Design)
+ 2. [Material Design](MaterialDesign)
      - Android Palette
+ 3. [Image Utilities](ImageUtilities)
  */
 
 //: [Next Page](@next)

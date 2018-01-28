@@ -32,7 +32,7 @@
 
 extension Image {
     
-    final public func scaled(
+    final public func resized(
         to size: Size,
         quality: CGInterpolationQuality = .high
     ) -> Image? {
@@ -45,11 +45,7 @@ extension Image {
         radius: CGFloat = 0
     ) -> Image? {
         let rect = Rect(origin: .zero, size: size)
-        #if os(macOS) || os(watchOS)
         guard let ctx = CGContext(size, false, 1) else { return nil }
-        #else
-        guard let ctx = CGContext(size, false, Screen.main.scale) else { return nil }
-        #endif
         ctx.setAllowsAntialiasing(true)
         ctx.setShouldAntialias(true)
         ctx.setFillColor(color.cgColor)

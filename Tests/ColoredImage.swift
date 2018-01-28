@@ -1,5 +1,5 @@
 //
-//  PaletteTests.swift
+//  ColoredImage.swift
 //
 //  The MIT License (MIT)
 //
@@ -27,7 +27,7 @@
 import XCTest
 @testable import ImageUtils
 
-class PaletteTests: XCTestCase {
+class ColoredImage: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -39,28 +39,8 @@ class PaletteTests: XCTestCase {
         super.tearDown()
     }
     
-    func testPalette() {
-        #if os(macOS)
-        let preview = Image(.init(width: 200, height: 200), color: .red, radius: 20)
-        #else
-        let preview = Image(named: "porsche-preview.jpg",
-                            in: Bundle(for: PaletteTests.self),
-                            compatibleWith: nil)
-        #endif
-        let palette = Palette.from(preview!).generate()
-        let _ = palette.getSwatches()
-        let _ = Color(hex: palette.getVibrantColor(0))
-        let _ = Color(hex: palette.getDarkVibrantColor(0))
-        let _ = Color(hex: (palette.getLightVibrantColor(0)))
-        let _ = Color(hex: palette.getMutedColor(0))
-        let _ = Color(hex: palette.getDarkMutedColor(0))
-        let _ = Color(hex: palette.getLightMutedColor(0))
-    }
-    
-    func testPaletteBanchmark() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testAllocation() {
+        let image = Image(Size(width: 50, height: 50), color: .red, radius: 25)
+        let _ = image?.cgImage
     }
 }

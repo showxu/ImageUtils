@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		330A096C201494C600B4D966 /* ImageUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 330A0962201494C500B4D966 /* ImageUtils.framework */; };
-		3396B8AC201AEDE4002AEAD1 /* preview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3396B8AB201AEDE4002AEAD1 /* preview.png */; };
-		3396B8AD201AEDE4002AEAD1 /* preview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3396B8AB201AEDE4002AEAD1 /* preview.png */; };
-		3396B8AE201AEDE4002AEAD1 /* preview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3396B8AB201AEDE4002AEAD1 /* preview.png */; };
+		332DC2E4201E1520003E84C5 /* porsche-preview.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 332DC2E3201E1520003E84C5 /* porsche-preview.jpg */; };
+		332DC2E5201E1520003E84C5 /* porsche-preview.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 332DC2E3201E1520003E84C5 /* porsche-preview.jpg */; };
+		332DC2E6201E1520003E84C5 /* porsche-preview.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 332DC2E3201E1520003E84C5 /* porsche-preview.jpg */; };
+		33716E6B201E07C30066595E /* ColoredImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33716E6A201E07C30066595E /* ColoredImage.swift */; };
+		33716E6C201E07C30066595E /* ColoredImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33716E6A201E07C30066595E /* ColoredImage.swift */; };
+		33716E6D201E07C30066595E /* ColoredImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33716E6A201E07C30066595E /* ColoredImage.swift */; };
 		33A51A542014B83900DDB509 /* Image.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A532014B83900DDB509 /* Image.Utils.swift */; };
 		33A51A552014B83900DDB509 /* Image.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A532014B83900DDB509 /* Image.Utils.swift */; };
 		33A51A562014B83900DDB509 /* Image.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A51A532014B83900DDB509 /* Image.Utils.swift */; };
@@ -110,7 +113,8 @@
 /* Begin PBXFileReference section */
 		330A0962201494C500B4D966 /* ImageUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImageUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		330A096B201494C600B4D966 /* ImageUtils Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "ImageUtils Tests.xctest"; path = "ImageUtils macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3396B8AB201AEDE4002AEAD1 /* preview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = preview.png; sourceTree = "<group>"; };
+		332DC2E3201E1520003E84C5 /* porsche-preview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "porsche-preview.jpg"; sourceTree = "<group>"; };
+		33716E6A201E07C30066595E /* ColoredImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredImage.swift; sourceTree = "<group>"; };
 		33A416F720171A3400114285 /* Target.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
 		33A416FC20171B3300114285 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		33A4170C2017335D00114285 /* ColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
@@ -232,6 +236,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		332DC2E7201E152C003E84C5 /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				332DC2E3201E1520003E84C5 /* porsche-preview.jpg */,
+			);
+			name = Asset;
+			sourceTree = "<group>";
+		};
 		3356C11F2016156A00042C1E /* ImageUtils */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +251,14 @@
 				33A51A792015963D00DDB509 /* Image.Builder.swift */,
 			);
 			path = ImageUtils;
+			sourceTree = "<group>";
+		};
+		33716E65201E073C0066595E /* ImageUtils */ = {
+			isa = PBXGroup;
+			children = (
+				33716E6A201E07C30066595E /* ColoredImage.swift */,
+			);
+			name = ImageUtils;
 			sourceTree = "<group>";
 		};
 		33A416F6201719F700114285 /* v7 */ = {
@@ -361,8 +381,9 @@
 		33C64E7420149968002DD382 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				3396B8AB201AEDE4002AEAD1 /* preview.png */,
+				332DC2E7201E152C003E84C5 /* Asset */,
 				33F060EB201CEADD00E3E9BB /* Material Design */,
+				33716E65201E073C0066595E /* ImageUtils */,
 				33AFE07F2014ADD30023DA8C /* Supporting Files */,
 			);
 			path = Tests;
@@ -670,7 +691,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3396B8AC201AEDE4002AEAD1 /* preview.png in Resources */,
+				332DC2E4201E1520003E84C5 /* porsche-preview.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,7 +706,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3396B8AD201AEDE4002AEAD1 /* preview.png in Resources */,
+				332DC2E5201E1520003E84C5 /* porsche-preview.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,7 +721,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3396B8AE201AEDE4002AEAD1 /* preview.png in Resources */,
+				332DC2E6201E1520003E84C5 /* porsche-preview.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,6 +761,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33716E6B201E07C30066595E /* ColoredImage.swift in Sources */,
 				33A51A5C2014B89A00DDB509 /* PaletteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -770,6 +792,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33716E6C201E07C30066595E /* ColoredImage.swift in Sources */,
 				33A51A5D2014B89D00DDB509 /* PaletteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -800,6 +823,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33716E6D201E07C30066595E /* ColoredImage.swift in Sources */,
 				33A51A5E2014B89E00DDB509 /* PaletteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -26,6 +26,7 @@
 
 import CoreGraphics.CGGeometry
 
+// MARK: CGPoint
 public func +(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
     return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
 }
@@ -61,3 +62,14 @@ public func *=(lhs: inout CGPoint, rhs: CGFloat) {
 public func /=(lhs: inout CGPoint, rhs: CGFloat) {
     lhs = lhs / rhs
 }
+
+// MARK: CGSize
+
+public func *(lhs: CGSize, rhs: CGFloat) -> CGSize {
+    return CGSize(width: lhs.width * rhs, height: lhs.height * rhs)
+}
+
+public func /(lhs: CGSize, rhs: CGFloat) -> CGSize {
+    return CGSize(width: lhs.width / rhs, height: lhs.height / rhs)
+}
+

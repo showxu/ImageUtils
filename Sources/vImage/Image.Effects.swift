@@ -299,5 +299,3 @@ extension Image {
 func cleanupBuffer(_ userData: UnsafeMutableRawPointer?, _ bufData: UnsafeMutableRawPointer?) -> Void {
     free(bufData)
 }
-
-

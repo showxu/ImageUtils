@@ -1,10 +1,10 @@
 //: [Previous Page](@previous)
 
-//: # Material Design
-import ImageUtils
+//: ## Material Design
 import UIKit
+import ImageUtils
 
-//: ## Android Palette
+//: ### Android Palette
 /*:
  With the relase of Android Lollipop, several new support libraries have been created. One of the new libraries is the Palette. This new class makes it easy to extract prominent colors from bitmap images, which is useful if you want to style other view components to match colors from your image, such as a background for the image or a text color with suitable contrast.
  
