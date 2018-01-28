@@ -114,6 +114,7 @@
 		330A0962201494C500B4D966 /* ImageUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImageUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		330A096B201494C600B4D966 /* ImageUtils Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "ImageUtils Tests.xctest"; path = "ImageUtils macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		332DC2E3201E1520003E84C5 /* porsche-preview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "porsche-preview.jpg"; sourceTree = "<group>"; };
+		332DC2E8201E20F7003E84C5 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		33716E6A201E07C30066595E /* ColoredImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredImage.swift; sourceTree = "<group>"; };
 		33A416F720171A3400114285 /* Target.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
 		33A416FC20171B3300114285 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -392,6 +393,7 @@
 		33C64E7A20149B31002DD382 /* Deployment */ = {
 			isa = PBXGroup;
 			children = (
+				332DC2E8201E20F7003E84C5 /* Package.swift */,
 				33C64E7C20149B4C002DD382 /* ImageUtils.podspec */,
 				33C64E7B20149B4C002DD382 /* LICENSE */,
 			);
