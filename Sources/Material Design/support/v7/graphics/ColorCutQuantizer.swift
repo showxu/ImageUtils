@@ -3,7 +3,6 @@
 //
 //
 
-import UIKit
 import libkern
 
 ///
@@ -330,8 +329,6 @@ final class ColorCutQuantizer {
             let greenMean = Int(round(Float(greenSum) / Float(totalPopulation)))
             let blueMean = Int(round(Float(blueSum) / Float(totalPopulation)))
         
-            let v = UIView(frame: .init(origin: .zero, size: .init(width: 200, height: 200)))
-            v.backgroundColor = Color(hex: ColorCutQuantizer.approximateToRgb888(redMean, greenMean, blueMean))
             return Palette.Swatch(
                 color: ColorCutQuantizer.approximateToRgb888(redMean, greenMean, blueMean),
                 population: totalPopulation

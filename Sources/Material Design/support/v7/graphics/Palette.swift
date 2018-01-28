@@ -795,7 +795,7 @@ extension Palette {
             return Bitmap.createScaledBitmap(bitmap,
                                              Int(ceil(Double(bitmap.width) * scaleRatio)),
                                              Int(ceil(Double(bitmap.height) * scaleRatio)),
-                                             false)!
+                                             .high)!
         }
     }
 }

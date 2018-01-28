@@ -3,7 +3,7 @@
 // 
 //
 
-import UIKit
+import CoreGraphics
 
 public typealias Bitmap = Image
 
@@ -13,7 +13,8 @@ extension Bitmap {
         _ src: Bitmap,
         _ dstWidth: Int,
         _ dstHeight: Int,
-        _ filter: Bool) -> Bitmap? = Bitmap.resize
+        _ quality: CGInterpolationQuality
+    ) -> Bitmap? = Bitmap.init
 
     public func getPixels(_ pixels: inout [Int],
                           _ offset: Int,
@@ -31,8 +32,12 @@ extension Bitmap {
         }
         // FIXME: check
         // checkPixelsAccess(x, y, width, height, offset, stride, pixels);
-        let ctx = CGImage.getContext(cgImage)
-        let data = ctx?.data?.assumingMemoryBound(to: UInt8.self)
+        #if os(macOS)
+            guard let ctx = cgImage(forProposedRect: nil, context: nil, hints: nil)?.context else { return }
+        #else
+            guard let ctx = cgImage?.context else { return }
+        #endif
+        let data = ctx.data?.assumingMemoryBound(to: UInt8.self)
         for i in 0..<width * height where data != nil {
             let offset = i * 4
             let a = data![offset]
@@ -40,7 +45,6 @@ extension Bitmap {
             let g = data![offset + 2]
             let b = data![offset + 3]
             let argb = Color.argb(Int(a), Int(r), Int(g), Int(b))
-
             pixels[i] = argb
         }
     }

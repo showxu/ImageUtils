@@ -19,9 +19,13 @@ class PaletteTests: XCTestCase {
     }
     
     func testPalette() {
-        let preview = UIImage(named: "preview.png",
-                              in: Bundle(for: PaletteTests.self),
-                              compatibleWith: nil)
+        #if os(macOS)
+        let preview = Image(.init(width: 200, height: 200), color: .red, radius: 20)
+        #else
+        let preview = Image(named: "preview.png",
+                            in: Bundle(for: PaletteTests.self),
+                            compatibleWith: nil)
+        #endif
         let palette = Palette.from(preview!).generate()
         let _ = palette.getSwatches()
         let _ = Color(hex: palette.getVibrantColor(0))

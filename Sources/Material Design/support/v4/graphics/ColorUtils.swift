@@ -3,9 +3,7 @@
 //
 //
 
-import UIKit
-
-// infix operator <<<< : AdditionPrecedence
+import CoreGraphics
 
 extension Color { public struct Utils { } }
 

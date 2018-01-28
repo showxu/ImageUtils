@@ -8,6 +8,7 @@
     public typealias Image = NSImage
     public typealias Screen = NSScreen
     public typealias Color = NSColor
+
 #elseif os(iOS) || os(tvOS) || os(watchOS)
     import UIKit.UIImage
 #if os(iOS) || os(tvOS)
@@ -20,4 +21,6 @@
 public typealias Point = CGPoint
 public typealias Size = CGSize
 public typealias Rect = CGRect
+
+
 
