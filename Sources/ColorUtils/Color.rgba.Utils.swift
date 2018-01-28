@@ -1,5 +1,5 @@
 //
-//  Compat.swift
+//  Color.rgba.Utils.swift
 //
 //  The MIT License (MIT)
 //
@@ -24,27 +24,26 @@
 //  SOFTWARE.
 //
 
-#if os(macOS)
-    import AppKit
-    
-    public typealias Image = NSImage
-    public typealias Screen = NSScreen
-    public typealias Color = NSColor
-    
-#elseif os(iOS) || os(tvOS) || os(watchOS)
-    import UIKit
-    
-#if os(iOS) || os(tvOS)
-    public typealias Screen = UIScreen
-    
-#endif
-    public typealias Image = UIImage
-    public typealias Color = UIColor
-    
-#endif
+import CoreGraphics
 
-
-public typealias Point = CGPoint
-public typealias Size = CGSize
-public typealias Rect = CGRect
+extension Color {
+    
+    public convenience init(hex: Int, alpha: Float = 1) {
+        self.init(
+            r: Color.red(hex),
+            g: Color.green(hex),
+            b: Color.blue(hex),
+            a: alpha
+        )
+    }
+    
+    public convenience init(r: Int, g: Int, b: Int, a: Float) {
+        self.init(
+            red: CGFloat(r) / 255,
+            green: CGFloat(g) / 255,
+            blue: CGFloat(b) / 255,
+            alpha: CGFloat(a)
+        )
+    }
+}
 

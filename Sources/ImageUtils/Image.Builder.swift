@@ -1,5 +1,5 @@
 //
-//  Compat.swift
+//  Image.Builder.swift
 //
 //  The MIT License (MIT)
 //
@@ -24,27 +24,24 @@
 //  SOFTWARE.
 //
 
-#if os(macOS)
-    import AppKit
-    
-    public typealias Image = NSImage
-    public typealias Screen = NSScreen
-    public typealias Color = NSColor
-    
-#elseif os(iOS) || os(tvOS) || os(watchOS)
-    import UIKit
-    
-#if os(iOS) || os(tvOS)
-    public typealias Screen = UIScreen
-    
-#endif
-    public typealias Image = UIImage
-    public typealias Color = UIColor
-    
-#endif
+import CoreGraphics
 
+// FIXME: Complete Image.Builder
+extension Image {
+    
+    public enum ImageSize {
+        case fixed(size: CGSize)
+        case resizable
+    }
+    
+    public struct ImageBorder {
+        var width: CGFloat = 0
+        var color: Color = .clear
+    }
+}
 
-public typealias Point = CGPoint
-public typealias Size = CGSize
-public typealias Rect = CGRect
-
+extension Image {
+    
+    public struct Builder {
+    }
+}
