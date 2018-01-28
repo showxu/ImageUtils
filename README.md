@@ -104,7 +104,7 @@ Download zip or clone repo and integrate into your project manually.
 
 ## Usage
 
-Clone the project and see the **Spotlight.playgroun** for detail usage.
+Clone the project and see the **Spotlight.playground** for detail usage.
 
 ## License
 [![license](https://img.shields.io/github/license/0xxd0/ImageUtils.svg?colorA=24292e&colorB=24292e&style=flat)](https://github.com/0xxd0/ImageUtils/blob/master/LICENSE)
