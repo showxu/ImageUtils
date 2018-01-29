@@ -1,10 +1,8 @@
 //
 //  Test.xcconfig
-//  ImageUtils
 //
 //
 
-CODE_SIGN_IDENTITY =
 AUTHOR_NAME = 0xxd0
 PRODUCT_NAME = $(TARGET_NAME)
 PRODUCT_BUNDLE_IDENTIFIER = com.0xxd0.$(PRODUCT_NAME:rfc1034identifier)

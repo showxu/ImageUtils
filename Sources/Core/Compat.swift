@@ -43,7 +43,6 @@
     
 #endif
 
-
 public typealias Point = CGPoint
 public typealias Size = CGSize
 public typealias Rect = CGRect

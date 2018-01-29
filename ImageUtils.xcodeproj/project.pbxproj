@@ -112,9 +112,10 @@
 
 /* Begin PBXFileReference section */
 		330A0962201494C500B4D966 /* ImageUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImageUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		330A096B201494C600B4D966 /* ImageUtils Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "ImageUtils Tests.xctest"; path = "ImageUtils macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		330A096B201494C600B4D966 /* ImageUtils macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ImageUtils macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		332DC2E3201E1520003E84C5 /* porsche-preview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "porsche-preview.jpg"; sourceTree = "<group>"; };
 		332DC2E8201E20F7003E84C5 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		332DC2E9201EC332003E84C5 /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		33716E6A201E07C30066595E /* ColoredImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredImage.swift; sourceTree = "<group>"; };
 		33A416F720171A3400114285 /* Target.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
 		33A416FC20171B3300114285 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -136,9 +137,9 @@
 		33C64E8020149CD2002DD382 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		33C64E8220149D2A002DD382 /* Tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Tests.xcconfig; sourceTree = "<group>"; };
 		33C64E892014A536002DD382 /* ImageUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImageUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		33C64E912014A537002DD382 /* ImageUtils Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "ImageUtils Tests.xctest"; path = "ImageUtils iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		33C64E912014A537002DD382 /* ImageUtils iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ImageUtils iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33C64EA52014A588002DD382 /* ImageUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImageUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		33C64EAD2014A589002DD382 /* ImageUtils Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "ImageUtils Tests.xctest"; path = "ImageUtils tvOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		33C64EAD2014A589002DD382 /* ImageUtils tvOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ImageUtils tvOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33C64EC12014A5A3002DD382 /* ImageUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImageUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33D71A93201773EB001FA25B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		33D71AA420182A49001FA25B /* Rect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
@@ -227,11 +228,11 @@
 			isa = PBXGroup;
 			children = (
 				330A0962201494C500B4D966 /* ImageUtils.framework */,
-				330A096B201494C600B4D966 /* ImageUtils Tests.xctest */,
+				330A096B201494C600B4D966 /* ImageUtils macOS Tests.xctest */,
 				33C64E892014A536002DD382 /* ImageUtils.framework */,
-				33C64E912014A537002DD382 /* ImageUtils Tests.xctest */,
+				33C64E912014A537002DD382 /* ImageUtils iOS Tests.xctest */,
 				33C64EA52014A588002DD382 /* ImageUtils.framework */,
-				33C64EAD2014A589002DD382 /* ImageUtils Tests.xctest */,
+				33C64EAD2014A589002DD382 /* ImageUtils tvOS Tests.xctest */,
 				33C64EC12014A5A3002DD382 /* ImageUtils.framework */,
 			);
 			name = Products;
@@ -403,6 +404,7 @@
 		33C64E7E20149C4A002DD382 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				332DC2E9201EC332003E84C5 /* Project.xcconfig */,
 				33C64E7F20149CBD002DD382 /* Debug.xcconfig */,
 				33C64E8020149CD2002DD382 /* Release.xcconfig */,
 				33C64E8220149D2A002DD382 /* Tests.xcconfig */,
@@ -520,7 +522,7 @@
 			);
 			name = "ImageUtils macOS Tests";
 			productName = ImageUtilsTests;
-			productReference = 330A096B201494C600B4D966 /* ImageUtils Tests.xctest */;
+			productReference = 330A096B201494C600B4D966 /* ImageUtils macOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		33C64E882014A536002DD382 /* ImageUtils iOS */ = {
@@ -556,7 +558,7 @@
 			);
 			name = "ImageUtils iOS Tests";
 			productName = "ImageUtils iOSTests";
-			productReference = 33C64E912014A537002DD382 /* ImageUtils Tests.xctest */;
+			productReference = 33C64E912014A537002DD382 /* ImageUtils iOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		33C64EA42014A588002DD382 /* ImageUtils tvOS */ = {
@@ -592,7 +594,7 @@
 			);
 			name = "ImageUtils tvOS Tests";
 			productName = "ImageUtils tvOSTests";
-			productReference = 33C64EAD2014A589002DD382 /* ImageUtils Tests.xctest */;
+			productReference = 33C64EAD2014A589002DD382 /* ImageUtils tvOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		33C64EC02014A5A3002DD382 /* ImageUtils watchOS */ = {
@@ -875,6 +877,7 @@
 /* Begin XCBuildConfiguration section */
 		330A0974201494C600B4D966 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 332DC2E9201EC332003E84C5 /* Project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -921,7 +924,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -934,6 +936,7 @@
 		};
 		330A0975201494C600B4D966 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 332DC2E9201EC332003E84C5 /* Project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -974,7 +977,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1060,7 +1062,6 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1082,7 +1083,6 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1141,7 +1141,6 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Debug;
 		};
@@ -1162,7 +1161,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 11.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1215,7 +1213,6 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Debug;
 		};
@@ -1238,7 +1235,6 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};
