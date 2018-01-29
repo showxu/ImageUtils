@@ -2,9 +2,9 @@
 # ImageUtils
 
 [![Travis CI](https://img.shields.io/travis/0xxd0/ImageUtils.svg)](https://www.travis-ci.org/0xxd0/ImageUtils)
-![](https://img.shields.io/badge/CocoaPods-✘-red.svg)
-![](https://img.shields.io/badge/Carthage-✔-red.svg)
-![](https://img.shields.io/badge/SPM-✔-red.svg)
+![CocoaPods](https://img.shields.io/cocoapods/v/ImageUtils.svg)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/0xxd0/ImageUtils)
+[![SPM compatible](https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat)](https://github.com/0xxd0/ImageUtils)
 ![](https://img.shields.io/github/repo-size/0xxd0/ImageUtils.svg)
 [![Join the chat at https://gitter.im/0xxd0/ImageUtils](https://badges.gitter.im/0xxd0/ImageUtils.svg)](https://gitter.im/0xxd0/ImageUtils?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -28,9 +28,7 @@ An elegant image utils & toolbox framework in pure Swift.
 
 ### CocoaPods 
 
-⚠️ Comming soon
-
-![CocoaPods](https://img.shields.io/cocoapods/v/ImageUtils.svg)
+**⚠️ Current unavailable, comming soon.**
 
 [CocoaPods](http://cocoapods.org) CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects. It has over 41 thousand libraries and is used in over 3 million apps. CocoaPods can help you scale your projects elegantly. 
 
@@ -62,7 +60,7 @@ $ pod install
 
 ### Carthage
 
-Carthage is intended to be the simplest way to add frameworks to your Cocoa application.
+[Carthage](https://github.com/Carthage/Carthage) builds your dependencies and provides you with binary frameworks, but you retain full control over your project structure and setup. Carthage does not automatically modify your project files or your build settings.
 
 #### Install Carthage 
 
