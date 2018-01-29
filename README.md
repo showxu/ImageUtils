@@ -17,7 +17,7 @@ An elegant image utils & toolbox framework in pure Swift.
 
 ## Requirement
 
-![platform](https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS-ed523f.svg)    ![language](https://img.shields.io/github/languages/top/0xxd0/ImageUtils.svg?colorB=ed523f)  ![Swift Version](https://img.shields.io/badge/Swift-3.2%20%7C%204.0-ed523f.svg)   ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/0xxd0/ImageUtils.svg?colorB=ed523f)
+![platform](https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS-ed523f.svg) ![language](https://img.shields.io/github/languages/top/0xxd0/ImageUtils.svg?colorB=ed523f) ![Swift Version](https://img.shields.io/badge/Swift-3.2%20%7C%204.0-ed523f.svg) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/0xxd0/ImageUtils.svg?colorB=ed523f)
 
 #### Required
 - Xcode 9.0+
@@ -89,6 +89,8 @@ github "0xxd0/ImageUtils" ~> 0.0.1
 
 The [Swift Package Manager](https://swift.org/package-manager/) is a tool for managing the distribution of Swift code. It’s integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies.
 
+⚠️ SPM only support macOS or Linux. 
+
 #### Integrate ImageUtils
 
 ```swift
@@ -111,7 +113,7 @@ Download zip or clone repo and integrate into your project manually.
 
 ## Usage
 
-Clone the project and see the **Spotlight.playground** for detail usage.
+Clone the project and see the **`Spotlight.playground`** for detail usage.
 
 ## License
 [![license](https://img.shields.io/github/license/0xxd0/ImageUtils.svg?colorA=24292e&colorB=24292e&style=flat)](https://github.com/0xxd0/ImageUtils/blob/master/LICENSE)
