@@ -28,7 +28,15 @@ An elegant image utils & toolbox framework in pure Swift.
 
 ### CocoaPods 
 
-**⚠️ Current unavailable, comming soon.**
+> ⚠️ Comming soon, you can use the master branch of the repository for now.
+
+```ruby
+target '<#Your Target#>' do
+    pod 'ImageUtils', :git => 'https://github.com/0xxd0/ImageUtils.git'
+end
+```
+
+***
 
 [CocoaPods](http://cocoapods.org) CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects. It has over 41 thousand libraries and is used in over 3 million apps. CocoaPods can help you scale your projects elegantly. 
 
