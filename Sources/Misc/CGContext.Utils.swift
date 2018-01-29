@@ -1,5 +1,5 @@
 //
-//  ColoredImage.swift
+//  CGContext.Utils.swift
 //
 //  The MIT License (MIT)
 //
@@ -24,23 +24,28 @@
 //  SOFTWARE.
 //
 
-import XCTest
-@testable import ImageUtils
+import CoreGraphics
 
-class ColoredImage: XCTestCase {
+extension CGContext {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testAllocation() {
-        let image = Image(Size(width: 50, height: 50), color: .red, radius: 25)
-        let _ = image?.cgImage
+    // Adds a rectangular path to the given context and rounds its corners by the given extents
+    public func addArc(to rect: Rect, semiMajorAxis: CGFloat, semiMinorAxis: CGFloat) {
+        if semiMajorAxis == 0 || semiMinorAxis == 0 {
+            addRect(rect)
+            return
+        }
+        saveGState()
+        defer {
+            restoreGState()
+        }
+        translateBy(x: rect.minX, y: rect.minY)
+        scaleBy(x: semiMajorAxis, y: semiMinorAxis)
+        let fw = rect.width / semiMajorAxis
+        let fh = rect.height / semiMinorAxis
+        move(to: .init(x: fw, y: fh / 2))
+        addArc(tangent1End: .init(x: fw, y: fh), tangent2End: .init(x: fw / 2, y: fh), radius: 1)
+        addArc(tangent1End: .init(x: 0, y: fh), tangent2End: .init(x: 0, y: fh / 2), radius: 1)
+        addArc(tangent1End: .init(x: 0, y: 0), tangent2End: .init(x: fw / 2, y: 0), radius: 1)
+        addArc(tangent1End: .init(x: fw, y: 0), tangent2End: .init(x: fw, y: fh / 2), radius: 1)
     }
 }

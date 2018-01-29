@@ -1,5 +1,5 @@
 //
-//  CorneredImage.swift
+//  ImageUtilsTests.swift
 //
 //  The MIT License (MIT)
 //
@@ -27,7 +27,7 @@
 import XCTest
 @testable import ImageUtils
 
-class CorneredImage: XCTestCase {
+class ImageUtilsTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -39,8 +39,18 @@ class CorneredImage: XCTestCase {
         super.tearDown()
     }
     
-    func testCornered() {
+    func testColoredImage() {
+        let image = Image(Size(width: 50, height: 50), color: .red, radius: 25)
+        let _ = image?.cgImage
+    }
+    
+    func testBorderedImage() {
+        let image = Image(Size(width: 50, height: 50), color: .red, radius: 25)
+        let _ = image?.bordered(25)
+    }
+    
+    func testClippedImage() {
         let image = Image(Size(width: 200, height: 200), color: .blue, radius: 0)!
-        let _ = image.rounded(radius: 10)!
+        let _ = image.clipped(radius: 20)
     }
 }

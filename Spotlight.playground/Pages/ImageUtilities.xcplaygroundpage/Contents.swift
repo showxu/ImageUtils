@@ -5,25 +5,20 @@ import ImageUtils
 
 //: ## Image Utilities
 
-//: **`colored image`**
+//: **`color image`**
 let dimension: CGFloat = 200
 let size = Size(width: dimension, height: dimension)
-let colored = Image(size, color: .red, radius: dimension / 2)!
+var image = Image(size, color: .red, radius: dimension / 2)!
+
+image = Image(size, color: .red)!
 
 //: **`resize image`**
-var resized = Image(resize: colored, to: size / 2, quality: .default)!
+let resized = image.resized(to: Size(width: 50, height: 50))
 
-resized = resized.resized(to: Size(width: 50, height: 50))!
+//: **`bordered image`**
+let bordered = image.bordered(30)
 
-//: **`tranparent bordered image`**
-var masked = Image(size, color: .green, radius: 0)!
-
-masked = Image(transparent: masked, border: 30)!
-
-masked = masked.transparent(border: 30)!
-
-//: **`round corner image`**
-var cornered = Image(size, color: .blue, radius: 0)!
-cornered = cornered.rounded(radius: 100)!
+//: **`clipped image`**
+let clipped = image.clipped(radius: 100)
 
 //: [Next Page](@next)

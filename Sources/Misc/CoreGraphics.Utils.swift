@@ -97,17 +97,23 @@ extension CGContext {
     final public class func `init`(
         _ size: Size,
         _ isOpaque: Bool,
-        _ scale: CGFloat) -> CGContext? {
-        let bitmapInfo = isOpaque ?
+        _ scale: CGFloat,
+        _ colorSpace: (@autoclosure () -> CGColorSpace) = CGColorSpaceCreateDeviceRGB()
+    ) -> CGContext? {
+        var bitmapInfo = isOpaque ?
             CGImageAlphaInfo.noneSkipFirst.rawValue | CGBitmapInfo.byteOrder32Little.rawValue:
             CGImageAlphaInfo.premultipliedFirst.rawValue | CGBitmapInfo.byteOrder32Little.rawValue
+        let colorSpace = colorSpace()
+        if colorSpace.model == .monochrome {
+            bitmapInfo = CGImageAlphaInfo.none.rawValue
+        }
         let ctx = CGContext(
             data: nil,
             width: Int(size.width * scale),
             height: Int(size.height * scale),
             bitsPerComponent: 8,
             bytesPerRow: 0,
-            space: CGColorSpaceCreateDeviceRGB(),
+            space: colorSpace,
             bitmapInfo: bitmapInfo
         )
         return ctx
@@ -139,19 +145,6 @@ extension CGContext {
             releaseInfo: nil
         )
         return ctx
-    }
-}
-
-extension Image {
-    
-    @_inlineable
-    final public var width: CGFloat {
-        return size.width
-    }
-    
-    @_inlineable
-    final public var height: CGFloat {
-        return size.height
     }
 }
 
