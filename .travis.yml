@@ -33,8 +33,14 @@ env:
     - DESTINATION="OS=9.2,name=Apple TV 1080p"     SCHEME="$TVOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO"
 
     - DESTINATION="arch=x86_64"                    SCHEME="$MACOS_FRAMEWORK_SCHEME"    RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO"
+    
 before_install:
+  - brew install git-lfs
   - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
+  
+before_script:
+  - git lfs pull
+  
 script:
   - set -o pipefail
   - xcodebuild -version
