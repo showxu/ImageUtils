@@ -231,7 +231,7 @@ extension Image {
             height: image.size.height
         )
         ctx.beginPath()
-        ctx.addRoundedRectToPath(rect, ovalWidth: radius, ovalHeight: radius)
+        ctx.addArc(to: rect, semiMajorAxis: radius, semiMinorAxis: radius)
         ctx.closePath()
         ctx.clip()
         ctx.draw(cgImage, in: .init(origin: .zero, size: image.size))
@@ -242,8 +242,8 @@ extension Image {
 extension CGContext {
     
     // Adds a rectangular path to the given context and rounds its corners by the given extents
-    internal func addRoundedRectToPath(_ rect: Rect, ovalWidth: CGFloat, ovalHeight: CGFloat) {
-        if ovalWidth == 0 || ovalHeight == 0 {
+    public func addArc(to rect: Rect, semiMajorAxis: CGFloat, semiMinorAxis: CGFloat) {
+        if semiMajorAxis == 0 || semiMinorAxis == 0 {
             addRect(rect)
             return
         }
@@ -252,9 +252,9 @@ extension CGContext {
             restoreGState()
         }
         translateBy(x: rect.minX, y: rect.minY)
-        scaleBy(x: ovalWidth, y: ovalHeight)
-        let fw = rect.width / ovalWidth
-        let fh = rect.height / ovalHeight
+        scaleBy(x: semiMajorAxis, y: semiMinorAxis)
+        let fw = rect.width / semiMajorAxis
+        let fh = rect.height / semiMinorAxis
         move(to: .init(x: fw, y: fh / 2))
         addArc(tangent1End: .init(x: fw, y: fh), tangent2End: .init(x: fw / 2, y: fh), radius: 1)
         addArc(tangent1End: .init(x: 0, y: fh), tangent2End: .init(x: 0, y: fh / 2), radius: 1)
