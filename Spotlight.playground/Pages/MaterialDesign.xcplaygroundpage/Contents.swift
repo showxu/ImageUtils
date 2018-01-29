@@ -6,13 +6,16 @@ import ImageUtils
 
 //: ### Android Palette
 /*:
- With the relase of Android Lollipop, several new support libraries have been created. One of the new libraries is the Palette. This new class makes it easy to extract prominent colors from bitmap images, which is useful if you want to style other view components to match colors from your image, such as a background for the image or a text color with suitable contrast.
+ With the relase of Android Lollipop, several new support libraries have been created. One of the new libraries is the Palette.
  
- And now, we can use it on the iOS platform.
+ Palette is a cool way to pull out theme colors from images, which is useful if you want to make view components to match color pattern from the image.
+ 
+ Now, we can use it on the Apple platform.
  */
-//: First we need to generate the color palette for the image
-let vivaLaVidaAlbum = UIImage(named: "viva-la-vida.jpg")!
-let palette = Palette.from(vivaLaVidaAlbum).generate()
+
+//: We need to generate the color palette for the image.
+let thumb = UIImage(named: "viva-la-vida.jpg")!
+let palette = Palette.from(thumb).generate()
 
 //: **`Vibrant Color`**
 let vibrant = Color(hex: palette.getVibrantColor(0))
@@ -32,6 +35,6 @@ let mutedDark = Color(hex: palette.getDarkMutedColor(0))
 //: **`Light Muted Color`**
 let mutedLight = Color(hex: palette.getLightMutedColor(0))
 
-//: See demo project for more detail about `Palette`.
+//: To learn more detail about Palette, see [Android Developers](https://developer.android.com/reference/android/support/v7/graphics/Palette.html)
 
 //: [Next Page](@next)

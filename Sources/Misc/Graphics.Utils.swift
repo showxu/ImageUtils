@@ -26,11 +26,31 @@
 
 import CoreGraphics
 
+extension CGContext {
+    
+    #if !os(macOS)
+    @available(iOS 2.0, *)
+    public func setFillColor(_ color: Color) {
+        self.setFillColor(color.cgColor)
+    }
+    #endif
+}
+
 extension Image {
     
     #if os(macOS)
     public convenience init(cgImage: CGImage) {
         self.init(cgImage: cgImage, size: .zero)
+    }
+    
+    @_inlineable
+    public var cgImage: CGImage? {
+        return self.cgImage(forProposedRect: nil, context: nil, hints: nil)
+    }
+    
+    @_inlineable
+    public var scale: CGFloat {
+        return 1
     }
     #endif
 }

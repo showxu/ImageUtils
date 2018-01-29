@@ -11,6 +11,9 @@
 		332DC2E4201E1520003E84C5 /* porsche-preview.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 332DC2E3201E1520003E84C5 /* porsche-preview.jpg */; };
 		332DC2E5201E1520003E84C5 /* porsche-preview.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 332DC2E3201E1520003E84C5 /* porsche-preview.jpg */; };
 		332DC2E6201E1520003E84C5 /* porsche-preview.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 332DC2E3201E1520003E84C5 /* porsche-preview.jpg */; };
+		3362C09F201F555E000D3FD4 /* CorneredImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3362C09E201F555E000D3FD4 /* CorneredImage.swift */; };
+		3362C0A0201F555E000D3FD4 /* CorneredImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3362C09E201F555E000D3FD4 /* CorneredImage.swift */; };
+		3362C0A1201F555E000D3FD4 /* CorneredImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3362C09E201F555E000D3FD4 /* CorneredImage.swift */; };
 		33716E6B201E07C30066595E /* ColoredImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33716E6A201E07C30066595E /* ColoredImage.swift */; };
 		33716E6C201E07C30066595E /* ColoredImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33716E6A201E07C30066595E /* ColoredImage.swift */; };
 		33716E6D201E07C30066595E /* ColoredImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33716E6A201E07C30066595E /* ColoredImage.swift */; };
@@ -116,6 +119,7 @@
 		332DC2E3201E1520003E84C5 /* porsche-preview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "porsche-preview.jpg"; sourceTree = "<group>"; };
 		332DC2E8201E20F7003E84C5 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		332DC2E9201EC332003E84C5 /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		3362C09E201F555E000D3FD4 /* CorneredImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorneredImage.swift; sourceTree = "<group>"; };
 		33716E6A201E07C30066595E /* ColoredImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredImage.swift; sourceTree = "<group>"; };
 		33A416F720171A3400114285 /* Target.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
 		33A416FC20171B3300114285 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -146,13 +150,6 @@
 		33D71AA920182FD1001FA25B /* Bitmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bitmap.swift; sourceTree = "<group>"; };
 		33D71AAE201859D5001FA25B /* ColorCutQuantizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCutQuantizer.swift; sourceTree = "<group>"; };
 		33F060ED201DA59900E3E9BB /* Graphics.Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphics.Utils.swift; sourceTree = "<group>"; };
-		3F56C73C34075AB3D6697DE4 /* Pods_ImageUtils_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageUtils_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		66ACD7AA16920D0AF1E4D30D /* Pods_ImageUtils_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageUtils_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A54B94D1A66CC04F1EAEE93 /* Pods_ImageUtils_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageUtils_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9E3FFAA709F569537813AD2 /* Pods_ImageUtils_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageUtils_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B9326E72F8925B111483CD0D /* Pods_ImageUtils_iOS_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageUtils_iOS_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9D95E1D1C92FAA0C707A58C /* Pods_ImageUtils_tvOS_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageUtils_tvOS_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DEC25E56422C55135D613FEA /* Pods_ImageUtils_macOS_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageUtils_macOS_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,8 +216,6 @@
 				33C64E7E20149C4A002DD382 /* Config */,
 				33C64E7A20149B31002DD382 /* Deployment */,
 				330A0963201494C500B4D966 /* Products */,
-				E0ADCCEEE90317AB3215CE07 /* Pods */,
-				B4C220040AC0B34ADD5BC414 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -259,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				33716E6A201E07C30066595E /* ColoredImage.swift */,
+				3362C09E201F555E000D3FD4 /* CorneredImage.swift */,
 			);
 			name = ImageUtils;
 			sourceTree = "<group>";
@@ -428,27 +424,6 @@
 				33C64E7520149968002DD382 /* PaletteTests.swift */,
 			);
 			name = "Material Design";
-			sourceTree = "<group>";
-		};
-		B4C220040AC0B34ADD5BC414 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A9E3FFAA709F569537813AD2 /* Pods_ImageUtils_iOS.framework */,
-				B9326E72F8925B111483CD0D /* Pods_ImageUtils_iOS_Tests.framework */,
-				3F56C73C34075AB3D6697DE4 /* Pods_ImageUtils_macOS.framework */,
-				DEC25E56422C55135D613FEA /* Pods_ImageUtils_macOS_Tests.framework */,
-				6A54B94D1A66CC04F1EAEE93 /* Pods_ImageUtils_tvOS.framework */,
-				D9D95E1D1C92FAA0C707A58C /* Pods_ImageUtils_tvOS_Tests.framework */,
-				66ACD7AA16920D0AF1E4D30D /* Pods_ImageUtils_watchOS.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E0ADCCEEE90317AB3215CE07 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -767,6 +742,7 @@
 			files = (
 				33716E6B201E07C30066595E /* ColoredImage.swift in Sources */,
 				33A51A5C2014B89A00DDB509 /* PaletteTests.swift in Sources */,
+				3362C09F201F555E000D3FD4 /* CorneredImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -798,6 +774,7 @@
 			files = (
 				33716E6C201E07C30066595E /* ColoredImage.swift in Sources */,
 				33A51A5D2014B89D00DDB509 /* PaletteTests.swift in Sources */,
+				3362C0A0201F555E000D3FD4 /* CorneredImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -829,6 +806,7 @@
 			files = (
 				33716E6D201E07C30066595E /* ColoredImage.swift in Sources */,
 				33A51A5E2014B89E00DDB509 /* PaletteTests.swift in Sources */,
+				3362C0A1201F555E000D3FD4 /* CorneredImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1002,7 +980,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1022,7 +999,6 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1034,7 +1010,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1046,7 +1021,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1066,7 +1040,6 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1086,7 +1059,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1102,7 +1074,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1117,7 +1088,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1139,7 +1109,6 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 			};
 			name = Debug;
@@ -1159,7 +1128,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1173,7 +1141,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
@@ -1187,7 +1154,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 				VALIDATE_PRODUCT = YES;
@@ -1211,7 +1177,6 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 			};
 			name = Debug;
@@ -1232,7 +1197,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 			};
