@@ -21,7 +21,7 @@ An elegant image utils & toolbox framework in pure Swift.
 
 #### Required
 - Xcode 9.0+
-- iOS 8.0+ | macOS 10.9+ | tvOS 9.0+ | watchOS 2.0+
+- iOS 8.0+ | macOS 10.10+ | tvOS 9.0+ | watchOS 2.0+
 - Swift 3.2+
 
 ## Installation
