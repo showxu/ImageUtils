@@ -1,5 +1,5 @@
 //
-//  CGImage.Utils.swift
+//  CGImage.Drawing.swift
 //
 //  The MIT License (MIT)
 //

@@ -3,7 +3,7 @@
     <pages>
         <page name='Introduce'/>
         <page name='vImage'/>
-        <page name='Material Design'/>
-        <page name='Image Utilities'/>
+        <page name='Quartz2D'/>
+        <page name='Material-Design'/>
     </pages>
 </playground>

@@ -1,5 +1,5 @@
 //
-//  Image.Utils.swift
+//  Drawing.swift
 //
 //  The MIT License (MIT)
 //
@@ -75,7 +75,6 @@ extension Image {
     }
 }
 
-
 // MARK: - Corner Clip
 extension Image {
     
@@ -83,27 +82,3 @@ extension Image {
         return Image(cgImage?.clipped(radius: radius))
     }
 }
-
-extension Image {
-    
-    public convenience init?(_ cgImage: CGImage?) {
-        guard let cgImage = cgImage else {
-            return nil
-        }
-        self.init(cgImage: cgImage)
-    }
-}
-
-extension Image {
-    
-    @_inlineable
-    final public var width: CGFloat {
-        return size.width
-    }
-    
-    @_inlineable
-    final public var height: CGFloat {
-        return size.height
-    }
-}
-

@@ -28,6 +28,16 @@ import CoreGraphics
 
 extension Image {
     
+    public convenience init?(_ cgImage: CGImage?) {
+        guard let cgImage = cgImage else {
+            return nil
+        }
+        self.init(cgImage: cgImage)
+    }
+}
+
+extension Image {
+    
     #if os(macOS)
     public convenience init(cgImage: CGImage) {
         self.init(cgImage: cgImage, size: .zero)
@@ -43,4 +53,17 @@ extension Image {
         return 1
     }
     #endif
+}
+
+extension Image {
+    
+    @_inlineable
+    final public var width: CGFloat {
+        return size.width
+    }
+    
+    @_inlineable
+    final public var height: CGFloat {
+        return size.height
+    }
 }

@@ -1,5 +1,5 @@
 //
-//  Image.Builder.swift
+//  ImageBuilder.swift
 //
 //  The MIT License (MIT)
 //

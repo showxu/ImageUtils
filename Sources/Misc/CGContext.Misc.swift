@@ -26,6 +26,25 @@
 
 import CoreGraphics
 
+extension CGBitmapInfo {
+    
+    public init(
+        _ space: @autoclosure () -> CGColorSpace = CGColorSpaceCreateDeviceRGB(),
+        _ isOpaque: Bool = false
+    ) {
+        switch space().model {
+        case .monochrome where isOpaque:
+            self.init(rawValue: CGImageAlphaInfo.none.rawValue)
+        case .rgb where isOpaque:
+            self.init(rawValue: CGImageAlphaInfo.noneSkipFirst.rawValue | CGBitmapInfo.byteOrder32Little.rawValue)
+        case .rgb:
+            self.init(rawValue: CGImageAlphaInfo.premultipliedFirst.rawValue | CGBitmapInfo.byteOrder32Little.rawValue)
+        default:
+            self.init(rawValue: CGBitmapInfo.byteOrderMask.rawValue)
+        }
+    }
+}
+
 extension CGContext {
     
     final public class func `init`(
@@ -35,20 +54,6 @@ extension CGContext {
         _ space: @autoclosure () -> CGColorSpace = CGColorSpaceCreateDeviceRGB()
     ) -> CGContext? {
         let space = space()
-        var bitmapInfo: UInt32
-        switch space.model {
-        case .monochrome where isOpaque:
-            bitmapInfo = CGImageAlphaInfo.none.rawValue
-            break
-        case .rgb where isOpaque:
-            bitmapInfo = CGImageAlphaInfo.noneSkipFirst.rawValue | CGBitmapInfo.byteOrder32Little.rawValue
-            break
-        case .rgb:
-            bitmapInfo = CGImageAlphaInfo.premultipliedFirst.rawValue | CGBitmapInfo.byteOrder32Little.rawValue
-        default:
-            bitmapInfo = CGBitmapInfo.byteOrderMask.rawValue
-            break
-        }
         let ctx = CGContext(
             data: nil,
             width: Int(size.width * scale),
@@ -56,7 +61,7 @@ extension CGContext {
             bitsPerComponent: 8,
             bytesPerRow: 0,
             space: space,
-            bitmapInfo: bitmapInfo
+            bitmapInfo: CGBitmapInfo(space, isOpaque).rawValue
         )
         return ctx
     }
