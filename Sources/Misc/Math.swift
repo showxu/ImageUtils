@@ -1,5 +1,5 @@
 //
-//  Math.Utils.swift
+//  Math.swift
 //
 //  The MIT License (MIT)
 //

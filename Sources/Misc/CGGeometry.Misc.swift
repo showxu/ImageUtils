@@ -1,5 +1,5 @@
 //
-//  CGGeometry.Utils.swift
+//  CGGeometry.Misc.swift
 //
 //  The MIT License (MIT)
 //

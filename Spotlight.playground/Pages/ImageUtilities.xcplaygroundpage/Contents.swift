@@ -8,9 +8,9 @@ import ImageUtils
 //: **`color image`**
 let dimension: CGFloat = 200
 let size = Size(width: dimension, height: dimension)
-var image = Image(size, color: .red, radius: dimension / 2)!
+let fooImage = Image(size, color: #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), radius: dimension / 2)!
 
-image = Image(size, color: .red)!
+let image = Image(size, color: #colorLiteral(red: 0, green: 0.6650493741, blue: 0.8382979631, alpha: 1))!
 
 //: **`resize image`**
 let resized = image.resized(to: Size(width: 50, height: 50))

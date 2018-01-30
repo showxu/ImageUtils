@@ -30,7 +30,7 @@ import CoreGraphics
 extension CGImage {
     
     final public class func `init`(
-        _ size: Size,
+        _ size: CGSize,
         color: CGColor,
         radius: CGFloat = 0
     ) -> CGImage? {
@@ -60,10 +60,10 @@ extension CGImage {
     
     final public class func `init`(
         _ image: CGImage,
-        to size: Size,
+        to size: CGSize,
         quality: CGInterpolationQuality = .high
     ) -> CGImage? {
-        let rect = Rect(origin: .zero, size: size).integral
+        let rect = CGRect(origin: .zero, size: size).integral
         // Use CGContext directly instead of UIKit api UIGraphicsBeginImageContextWithOptions
         guard let ctx = CGContext(size, false, 1) else { return nil }
         // Set the quality level to use when rescaling
@@ -198,7 +198,7 @@ extension CGImage {
         guard let ctx = CGContext(bitmap: image) else { return nil }
         ctx.interpolationQuality = quality
         // Create a clipping path with rounded corners
-        let rect = Rect(
+        let rect = CGRect(
             x: 0,
             y: 0,
             width: image.size.width,

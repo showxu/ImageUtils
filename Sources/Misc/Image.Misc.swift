@@ -1,5 +1,5 @@
 //
-//  CGContext.Utils.swift
+//  Image.Misc.swift
 //
 //  The MIT License (MIT)
 //
@@ -26,26 +26,21 @@
 
 import CoreGraphics
 
-extension CGContext {
+extension Image {
     
-    // Adds a rectangular path to the given context and rounds its corners by the given extents
-    public func addArc(to rect: Rect, semiMajorAxis: CGFloat, semiMinorAxis: CGFloat) {
-        if semiMajorAxis == 0 || semiMinorAxis == 0 {
-            addRect(rect)
-            return
-        }
-        saveGState()
-        defer {
-            restoreGState()
-        }
-        translateBy(x: rect.minX, y: rect.minY)
-        scaleBy(x: semiMajorAxis, y: semiMinorAxis)
-        let fw = rect.width / semiMajorAxis
-        let fh = rect.height / semiMinorAxis
-        move(to: .init(x: fw, y: fh / 2))
-        addArc(tangent1End: .init(x: fw, y: fh), tangent2End: .init(x: fw / 2, y: fh), radius: 1)
-        addArc(tangent1End: .init(x: 0, y: fh), tangent2End: .init(x: 0, y: fh / 2), radius: 1)
-        addArc(tangent1End: .init(x: 0, y: 0), tangent2End: .init(x: fw / 2, y: 0), radius: 1)
-        addArc(tangent1End: .init(x: fw, y: 0), tangent2End: .init(x: fw, y: fh / 2), radius: 1)
+    #if os(macOS)
+    public convenience init(cgImage: CGImage) {
+        self.init(cgImage: cgImage, size: .zero)
     }
+    
+    @_inlineable
+    public var cgImage: CGImage? {
+        return self.cgImage(forProposedRect: nil, context: nil, hints: nil)
+    }
+    
+    @_inlineable
+    public var scale: CGFloat {
+        return 1
+    }
+    #endif
 }
