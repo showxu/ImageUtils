@@ -25,6 +25,11 @@
 //
 
 import CoreGraphics.CGImage
+#if os(macOS)
+import OpenGL
+#elseif !os(watchOS)
+import OpenGLES
+#endif
 
 extension CGImage {
     
@@ -60,6 +65,41 @@ extension CGImage {
             intent: .defaultIntent
         )
         return cgImage
+    }
+}
+
+extension CGImage {
+    
+    #if !os(watchOS)
+    final public func readPixels() {
+        glReadPixels(GLint(0), GLint(0), GLsizei(width), GLsizei(height), GLenum(GL_RGB), GLenum(GL_UNSIGNED_BYTE),         context?.data)
+    }
+    #endif
+}
+
+extension CGImage {
+    
+    final public var pixels: [Int] {
+        guard
+            width != 0 && height != 0,
+            // Context should live in memory for auto managing underlying data.
+            let ctx = context,
+            // FIMEX: (dataProvider?.data) is more faster
+            let data = ctx.data?.assumingMemoryBound(to: UInt8.self)
+        else { return [] }
+        var pixels: [Int] = []
+        pixels.reserveCapacity(width * height)
+
+        for i in 0..<width * height {
+            let offset = i * 4
+            let b = data[offset]
+            let g = data[offset + 1]
+            let r = data[offset + 2]
+            let a = data[offset + 3]
+            let argb = Color.argb(Int(a), Int(r), Int(g), Int(b))
+            pixels.append(argb)
+        }
+        return pixels
     }
 }
 
