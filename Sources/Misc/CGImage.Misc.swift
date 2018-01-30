@@ -27,7 +27,7 @@
 import CoreGraphics.CGImage
 #if os(macOS)
 import OpenGL
-#elseif !os(watchOS)
+#elseif os(tvOS) || os(iOS)
 import OpenGLES
 #endif
 
@@ -70,7 +70,7 @@ extension CGImage {
 
 extension CGImage {
     
-    #if !os(watchOS)
+    #if os(tvOS) || os(iOS)
     final public func readPixels() {
         glReadPixels(GLint(0), GLint(0), GLsizei(width), GLsizei(height), GLenum(GL_RGB), GLenum(GL_UNSIGNED_BYTE),         context?.data)
     }
