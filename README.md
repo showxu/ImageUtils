@@ -10,10 +10,16 @@
 
 An elegant image utils & toolbox framework in pure Swift.
 
+- [Features](#features)
 - [Requirement](#requirement)
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
+
+## Features
+ 1. vImage based blur
+ 2. Android Palette in Swift
+ 3. Quartz2D drawing
 
 ## Requirement
 
